@@ -1,0 +1,794 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : PayboxDirect
+ major_version : 28
+ minor_version : 0
+ type : 4
+ description : ""
+ subtype : 0
+class :
+ identifier : 0x10c064e40008cc4a
+ internal_properties : CAAAAAgAAAB2/vstTMCJbS/hlxjFxirSqKvCUuv8YxgpWyl7S3iA
+ code_elements :
+  type_code : 10
+  p_codes :
+   -
+     code : |1-
+      PayboxDirect is class
+      
+      	global public
+      		Parameters 					is PayboxConfiguration
+      		
+      	global private
+      		constant
+      			VAR_ACQUEREUR				= "ACQUEREUR"
+      			VAR_ACTIVITE        		= "ACTIVITE"
+      			VAR_ARCHIVAGE       		= "ARCHIVAGE"
+      			VAR_AUTORISATION    		= "AUTORISATION"
+      			VAR_CODEREPONSE     		= "CODEREPONSE"
+      			VAR_COMMENTAIRE     		= "COMMENTAIRE"
+      			VAR_CVV             		= "CVV"
+      			VAR_DATENAISS       		= "DATENAISS"
+      			VAR_DATEQ           		= "DATEQ"
+      			VAR_DATEVAL         		= "DATEVAL"
+      			VAR_DEVISE          		= "DEVISE"
+      			VAR_DIFFERE         		= "DIFFERE"
+      			VAR_ERRORCODETEST   		= "ERRORCODETEST"
+      			VAR_ID3D            		= "ID3D"
+      			VAR_3DCAVV          		= "3DCAVV"
+      			VAR_3DCAVVALGO      		= "3DCAVVALGO"
+      			VAR_3DECI           		= "3DECI"
+      			VAR_3DENROLLED      		= "3DENROLLED"
+      			VAR_3DERROR         		= "3DERROR"
+      			VAR_3DSIGNVAL       		= "3DSIGNVAL"				
+      			VAR_3DSTATUS                = "3DSTATUS"
+      			VAR_3DXID                   = "3DXID"
+      			VAR_MONTANT                 = "MONTANT"
+      			VAR_NUMAPPEL                = "NUMAPPEL"
+      			VAR_NUMQUESTION             = "NUMQUESTION"
+      			VAR_NUMTRANS                = "NUMTRANS"
+      			VAR_PAYS                    = "PAYS"
+      			VAR_PORTEUR                 = "PORTEUR"
+      			VAR_PRIV_CODETRAITEMENT     = "PRIV_CODETRAITEMENT"
+      			VAR_RANG			        = "RANG"
+      			VAR_REFABONNE               = "REFABONNE"
+      			VAR_REFERENCE               = "REFERENCE"
+      			VAR_REMISE                  = "REMISE"
+      			VAR_SHA1                   	= "SHA-1"
+      			VAR_SITE                    = "SITE"
+      			VAR_STATUS                  = "STATUS"
+      			VAR_TYPE                    = "TYPE"
+      			VAR_TYPECARTE               = "TYPECARTE"
+      			VAR_URL_ENCODE              = "URL_ENCODE"
+      			VAR_VERSION                 = "VERSION"
+      			VAR_CLE	                 	= "CLE"
+      		end
+      		
+      		constant
+      			URL_PREPROD					= "https://preprod-ppps.paybox.com/PPPS.php"
+      			URL_PROD					= "https://ppps.paybox.com/PPPS.php"
+      			URL_PROD_2					= "https://ppps1.paybox.com/PPPS.php"
+      		end
+      end
+      
+      
+      // Recognized operations
+      TypeOperationPPS is Énumération
+      	Authorization_Only				=	"00001"	// Authorization only
+      	Debit							=	"00002" // Debit
+      	Authorization_Debit			=	"00003"	// Authorization + Debit
+      	Credit							= 	"00004" // Credit
+      	Cancellation						= 	"00005" // Cancellation
+      	Check_Transaction		= 	"00011" // Check for a transaction
+      	Forced_Transaction				= 	"00012" // Transaction without requesting authorization
+      	Refund					= 	"00014" // Refund
+      	Consultation					= 	"00017" // Consultation
+      	Subscriber_Authorization_Only		= 	"00051" // Authorization only on a Direct Plus subscriber
+      	Subscriber_Debit					= 	"00052" // Debit on a Direct Plus subscriber only
+      	Subscriber_Authorization_Debit		= 	"00053" // Authorization + Debit on a Direct Plus subscriber only
+      	Subscriber_Credit					= 	"00054" // Credit on a Direct Plus subscriber only
+      	Subscriber_Cancellation				= 	"00055" // Cancellation of a transaction on a Direct Plus subscriber only
+      	Subscriber_Subscription				= 	"00056" // New Direct Plus subscriber registration only
+      	Subscriber_Modification				= 	"00057" // Modification of an existing Direct Plus subscriber only
+      	Subscriber_Deletion				= 	"00058" // Deletion of a Direct Plus subscriber only
+      	Subscriber_Forced_Transaction		= 	"00061" // Transaction without requesting authorization (forced) Direct Plus only
+      end
+     type : 131072
+  procedures :
+   -
+     name : Constructeur
+     procedure_id : 1207075630551256138
+     type_code : 27
+     code : |1+
+      procedure Constructor()
+      
+     type : 589824
+   -
+     name : Destructeur
+     procedure_id : 1207075630551321674
+     type_code : 28
+     code : |1+
+      procedure Destructor()
+      
+     type : 655360
+   -
+     name : PPPS
+     procedure_id : 1207077258371962472
+     type_code : 12
+     code : |1-
+      procedure private global PPPS( eTypeOperation is TypeOperationPPS, aaParameters is ASSOCIATIVE ARRAY of strings ) <business logic> : httpRequest
+      
+      	stPPPS is httpRequest
+      	aaGlobalParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	if Parameters.Preproduction then
+      		stPPPS.URL = URL_PREPROD
+      	else
+      		stPPPS.URL = URL_PROD
+      	end
+      	
+       	stPPPS.ContentType 		= typeMimeSimpleForm
+       	stPPPS.Timeout	= 1 min 30 s
+       	 	
+       	// Global parameters
+       	aaGlobalParameters[ VAR_VERSION ]		= Parameters.ContratPlus ? "00104" else "00103"	// Paybox Direct / Paybox Direct Plus
+       	aaGlobalParameters[ VAR_TYPE ]			= eTypeOperation.Value
+      
+       	// Identifiers
+       	aaGlobalParameters[ VAR_SITE ] 			= Parameters.DSContract
+       	aaGlobalParameters[ VAR_RANG ]			= Parameters.Rang
+       	aaGlobalParameters[ VAR_CLE ]  			= Parameters.SecretKey
+      	aaGlobalParameters[ VAR_ARCHIVAGE ] 	= Parameters.ArchiveReference
+      
+      	// Compilation of parameters
+      	for each sValue, sParameterKey of aaParameters
+      		aaGlobalParameters[ sParameterKey ] = sValue
+      	end
+       	
+       	// Timestamp
+       	aaGlobalParameters[ VAR_DATEQ ]  		= DateTimeToString(SysDateTime, "DDMMYYYYHHmmSS")				// 14 digits
+      	aaGlobalParameters[ VAR_NUMQUESTION ]	= NumToString(TimeToInteger(Now), "010d")		// 10 digits
+      
+      	// Create the form
+      	for each sValue, sParameterKey of aaGlobalParameters
+      		stPPPS.Content += [ "&" ] + sParameterKey + "=" + sValue
+      	end
+      
+      return stPPPS
+     type : 458752
+   -
+     name : PPPSResponse
+     internal_properties : CAAAAAgAAABJKxyXl7zlxtHat7jk7y5/+QuO/FY3pzOhWPM+eFVJUUtegCANqt2R0plvZnTKw7zJPLjk5gol+YGQO6xBH+sHrkZnilpXh8nrpVVDr/nN1VTOl54z6nkYW3sI48AoiHNyLvK411UgjEKUte4=
+     procedure_id : 1207091607860514448
+     type_code : 12
+     code : |1-
+      // Summary: Interprets the HTTP response from Paybox
+      // Syntax:
+      // [ <Result> = ] PPPSResponse (<stResponse> is httpResponse)
+      //
+      // Parameters:
+      //	stResponse (httpResponse): HTTP response
+      // Return value:
+      // 	PPPSResponse: PPPS response
+      //
+      procedure private global PPPSResponse( stResponse is httpResponse ) : PayboxResponse 
+      
+      	stPPPSResponse is PayboxResponse
+      	
+      	// Request failed
+      	if stResponse.StatusCode = 0 then
+      		ErrorThrow(500, "Unexpected error")
+      		return stPPPSResponse
+      	end
+      
+      	// Read the response
+      	sResponse is string = stResponse.Content
+      	if sResponse = "" then
+      		ErrorThrow(404, "Invalid response")
+      		return stPPPSResponse
+      	end
+      	
+      	// Extract the parameters of the response
+      	arrResponse is array of 0 by 2 strings
+      	StringToArray( sResponse, arrResponse, "&", "=" )
+      		
+      	// Reading
+      	for i = 1 _to_ arrResponse.Count / 2		
+      		stPPPSResponse.Parameters[ arrResponse[ i, 1 ] ] = arrResponse[ i, 2 ]
+      	end
+      	
+      	// Special cases for 001xx
+      	if stPPPSResponse.Parameters[ VAR_CODEREPONSE ] [= "001" then
+      		// Valid response
+      		if stPPPSResponse.Parameters[ VAR_CODEREPONSE ] = "00100" then
+      			stPPPSResponse.ResponseCode = Operation_Successful
+      		// Other error
+      		else
+      			// The comment will contain the details
+      			stPPPSResponse.ResponseCode = Error_PayboxTransaction
+      		end
+      	else
+      		stPPPSResponse.ResponseCode	= EnumerationFromValue( PayboxTypeResponse, stPPPSResponse.Parameters[ VAR_CODEREPONSE ], PayboxTypeResponse.Error_Paybox )		
+      	end
+      	
+      	// Interpretation
+      	stPPPSResponse.ErrorInfo		= stPPPSResponse.Parameters[ VAR_COMMENTAIRE ]
+      	stPPPSResponse.OperationSuccessful	= ( stPPPSResponse.ResponseCode = Operation_Successful )
+      	stPPPSResponse.ValidSignature	= True
+      	
+      return stPPPSResponse
+     type : 458752
+   -
+     name : TriggerAuthorization
+     procedure_id : 1207093849833506208
+     type_code : 12
+     code : |1-
+      // Summary: Executes an authorization request
+      // Syntax:
+      //[ <Result> = ] TriggerAuthorization (<cyAmount> is currency, <sReference> is string, <stCCInfo> is PayboxCCInfo [, <eActivity> is SET_DECLARATIONS.PayboxActivity])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	stCCInfo (PayboxCCInfo): Credit card details
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_DECLARATIONS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerAuthorization( cyAmount is currency, sReference is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits
+      	
+      	// Payment
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.NumberBC										
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate												
+      	aaParameters[ VAR_CVV ] 		= stCCInfo.VisualCryptogram												
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Authorization_Only, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerDebit
+     procedure_id : 1207093957207779035
+     type_code : 12
+     code : |1-
+      // Summary: Validates an authorization
+      // Syntax:
+      //[ <Result> = ] TriggerDebit (<cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string [, <eActivity> is SET_CONSTANTS.PayboxActivity])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_CONSTANTS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerDebit( cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits		
+      	
+      	// Reminder
+      	aaParameters[ VAR_NUMTRANS ] 	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ] 	= sCallNum														
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Debit, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerRefund
+     procedure_id : 1207094597157924473
+     type_code : 12
+     code : |1-
+      // Summary: Executes a refund
+      // Syntax:
+      //[ <Result> = ] TriggerRefund (<cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string [, <eActivity> is SET_CONSTANTS.PayboxActivity])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_CONSTANTS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerRefund( cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits		
+      	
+      	// Reminder
+      	aaParameters[ VAR_NUMTRANS ] 	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ] 	= sCallNum														
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Refund, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerConsultation
+     procedure_id : 1207094949345324901
+     type_code : 12
+     code : |1-
+      // Summary: Performs a consultation
+      // Syntax:
+      //[ <Result> = ] TriggerConsultation (<cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string [, <eActivity> is SET_CONSTANTS.PayboxActivity])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_CONSTANTS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerConsultation( cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value												
+      	
+      	// Reminder
+      	aaParameters[ VAR_NUMTRANS ] 	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ] 	= sCallNum														
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Consultation, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerAuthorizationDebit
+     procedure_id : 1207095353072344319
+     type_code : 12
+     code : |1-
+      // Summary: Executes an authorization + debit request
+      // Syntax:
+      //[ <Result> = ] TriggerAuthorizationDebit (<cyAmount> is currency, <sReference> is string, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode [, <eActivity> is SET_DECLARATIONS.PayboxActivity]])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	stCCInfo (PayboxCCInfo): Credit card details (Card number, Expiration date, CVC)
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_DECLARATIONS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerAuthorizationDebit( cyAmount is currency, sReference is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits	
+      	
+      	// Payment
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.NumberBC										
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate												
+      	aaParameters[ VAR_CVV ] 		= stCCInfo.VisualCryptogram												
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Authorization_Debit, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerCancellation
+     procedure_id : 1207095645130189228
+     type_code : 12
+     code : |1-
+      // Summary: Executes the cancellation of a debit or refund (no cancellation possible on an authorization)
+      // Syntax:
+      //[ <Result> = ] TriggerCancellation (<cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string [, <eActivity> is SET_CONSTANTS.PayboxActivity])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_CONSTANTS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerCancellation( cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits		
+      	
+      	// Reminder
+      	aaParameters[ VAR_NUMTRANS ] 	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ] 	= sCallNum														
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Cancellation, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerCancellationSubscriber
+     procedure_id : 1207096177706191521
+     type_code : 12
+     code : |1-
+      // Summary: Executes a cancellation of a debit or refund (no cancellation possible on an authorization)
+      // Syntax:
+      //[ <Result> = ] TriggerCancellationSubscriber (<sSubscriberRef> is string, <cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode [, <eActivity> is SET_DECLARATIONS.PayboxActivity]])
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	stCCInfo (PayboxCCInfo): Credit card details (Holder ID, Expiration date)
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_DECLARATIONS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PayboxResponse: Paybox Direct response
+      //
+      procedure public global TriggerCancellationSubscriber( sSubscriberRef is string, cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet )  : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits		
+      	
+      	// Reminder
+      	aaParameters[ VAR_REFABONNE ] 	= sSubscriberRef										
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.HolderIdentifier														
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate														
+      	aaParameters[ VAR_NUMTRANS ] 	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ] 	= sCallNum														
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Cancellation, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerAuthorizationSubscriber
+     procedure_id : 1207096177706257104
+     type_code : 12
+     code : |1-
+      // Summary: Executes an authorization request
+      // Syntax:
+      //[ <Result> = ] TriggerAuthorizationSubscriber (<sSubscriberRef> is string, <cyAmount> is currency, <sReference> is string, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode [, <eActivity> is SET_DECLARATIONS.PayboxActivity]])
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	stCCInfo (PayboxCCInfo): Credit card details (Holder ID, Expiration date)
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_DECLARATIONS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerAuthorizationSubscriber( sSubscriberRef is string, cyAmount is currency, sReference is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet )  : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value												
+      	
+      	// Payment
+      	aaParameters[ VAR_REFABONNE ] 	= sSubscriberRef		
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.HolderIdentifier
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate									// MM/YY
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Authorization_Only, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerAuthorizationDebitSubscriber
+     procedure_id : 1207096177706322687
+     type_code : 12
+     code : |1-
+      // Summary: Executes an authorization + debit request
+      // Syntax:
+      //[ <Result> = ] TriggerAuthorizationDebitSubscriber (<sSubscriberRef> is string, <cyAmount> is currency, <sReference> is string, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode [, <eActivity> is SET_DECLARATIONS.PayboxActivity]])
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	stCCInfo (PayboxCCInfo): Credit card details (Holder ID, Expiration date)
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_DECLARATIONS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerAuthorizationDebitSubscriber( sSubscriberRef is string, cyAmount is currency, sReference is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits			
+      		
+      	// Payment
+      	aaParameters[ VAR_REFABONNE ]	= sSubscriberRef		
+      	aaParameters[ VAR_PORTEUR ]		= stCCInfo.HolderIdentifier										
+      	aaParameters[ VAR_DATEVAL ]		= stCCInfo.ValidityDate												
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Authorization_Debit, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerDebitSubscriber
+     procedure_id : 1207096177706388270
+     type_code : 12
+     code : |1-
+      // Summary: Validates an authorization
+      // Syntax:
+      //[ <Result> = ] TriggerDebitSubscriber (<cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string [, <eActivity> is SET_CONSTANTS.PayboxActivity])
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_CONSTANTS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerDebitSubscriber( sSubscriberRef is string, cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet )  : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value										// 2 digits		
+      	
+      	// Reminder
+      	aaParameters[ VAR_REFABONNE ]	= sSubscriberRef													
+      	aaParameters[ VAR_NUMTRANS ]	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ]	= sCallNum		
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Debit, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerDeletionSubscriber
+     procedure_id : 1207098226406003631
+     type_code : 12
+     code : |1-
+      // Summary: Deletes a subscriber
+      // Syntax:
+      //[ <Result> = ] TriggerDeletionSubscriber (<sSubscriberRef> is string)
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      // Return value:
+      // 	PayboxResponse: Paybox Direct response
+      //
+      procedure public global TriggerDeletionSubscriber( sSubscriberRef is string ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Reminder
+      	aaParameters[ VAR_REFABONNE ] 	= sSubscriberRef										
+      	
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Deletion, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerModificationSubscriber
+     procedure_id : 1207098673082706149
+     type_code : 12
+     code : |1-
+      // Summary: Executes an authorization request
+      // Syntax:
+      //[ <Result> = ] TriggerModificationSubscriber (<sSubscriberRef> is string, <cyAmount> is currency, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode])
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      //	cyAmount (currency): Amount in Euros
+      //	stCCInfo (PayboxCCInfo): Credit card details (Card number, Expiration date, CVC)
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      // Return value:
+      // 	PPPSResponse: Paybox Direct response
+      //
+      procedure public global TriggerModificationSubscriber( sSubscriberRef is string, cyAmount is currency, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR )  : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= NumToString(cyAmount * 100, "010d")		// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	
+      	// Payment
+      	aaParameters[ VAR_REFABONNE ] 	= sSubscriberRef		
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.NumberBC										
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate										
+      	aaParameters[ VAR_CVV ] 		= stCCInfo.VisualCryptogram
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Modification, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerCredit
+     procedure_id : 1222759927699898779
+     type_code : 12
+     code : |1-
+      // Summary: Executes a credit transaction
+      // Syntax:
+      //[ <Result> = ] TriggerCredit (<cyAmount> is currency, <sReference> is string, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	stCCInfo (PayboxCCInfo): Credit card details
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      // Return value:
+      // 	PayboxResponse: Paybox Direct response
+      //
+      procedure public global TriggerCredit( cyAmount is currency, sReference is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	
+      	// Payment
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.NumberBC										
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate												
+      	aaParameters[ VAR_CVV ] 		= stCCInfo.VisualCryptogram												
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Credit, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerCreditSubscriber
+     procedure_id : 1222759931994931846
+     type_code : 12
+     code : |1-
+      // Summary: Credits a subscriber
+      // Syntax:
+      //[ <Result> = ] TriggerCreditSubscriber (<sSubscriberRef> is string, <cyAmount> is currency, <sReference> is string, <stCCInfo> is PayboxCCInfo [, <eCurrency> is SET_DECLARATIONS.CurrencyCode])
+      //
+      // Parameters:
+      //	sSubscriberRef (ANSI string): Subscriber reference
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	stCCInfo (PayboxCCInfo): Credit card details (Holder ID, Expiration date)
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      // Return value:
+      // 	PayboxResponse: Paybox Direct response
+      //
+      procedure public global TriggerCreditSubscriber( sSubscriberRef is string, cyAmount is currency, sReference is string, stCCInfo is payboxccinfo, eCurrency is CurrencyCode = EUR )  : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	
+      	// Payment
+      	aaParameters[ VAR_REFABONNE ] 	= sSubscriberRef		
+      	aaParameters[ VAR_PORTEUR ] 	= stCCInfo.HolderIdentifier
+      	aaParameters[ VAR_DATEVAL ] 	= stCCInfo.ValidityDate									// MM/YY
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Subscriber_Credit, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+   -
+     name : TriggerCheck
+     procedure_id : 1370820021767358871
+     type_code : 12
+     code : |1-
+      // Summary: Performs a check
+      // Syntax:
+      //[ <Result> = ] TriggerVerification (<cyAmount> is currency, <sReference> is string, <sTransactionNum> is string, <sCallNum> is string [, <eCurrency> is SET_DECLARATIONS.CurrencyCode [, <eActivity> is SET_DECLARATIONS.PayboxActivity]])
+      //
+      // Parameters:
+      //	cyAmount (currency): Amount in Euros
+      //	sReference (ANSI string): Order reference
+      //	sTransactionNum (ANSI string): Transaction number obtained with RequestAuthorization
+      //	sCallNum (ANSI string): Call number obtained with RequestAuthorization
+      //	eCurrency (SET_DECLARATIONS.CurrencyCode): Currency
+      //	eActivity (SET_DECLARATIONS.PayboxActivity): Associated activity type
+      // Return value:
+      // 	PayboxResponse: <specify the role of the return value>
+      //
+      procedure public global TriggerCheck( cyAmount is currency, sReference is string, sTransactionNum is string, sCallNum is string, eCurrency is CurrencyCode = EUR, eActivity is PayboxActivity = RequestByInternet ) : PayboxResponse
+      
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Parameters 
+      	aaParameters[ VAR_MONTANT ]		= Round(cyAmount * 100)							// 10 digits, in cents
+      	aaParameters[ VAR_DEVISE ] 		= eCurrency.Value										// 3 digits
+      	aaParameters[ VAR_REFERENCE ] 	= Truncate(sReference, 250)							// 1-250 characters
+      	aaParameters[ VAR_ACTIVITE ] 	= eActivity.Value												
+      	
+      	// Reminder
+      	aaParameters[ VAR_NUMTRANS ] 	= sTransactionNum										
+      	aaParameters[ VAR_NUMAPPEL ] 	= sCallNum														
+      
+      	// Transmission
+      	stResponse is httpResponse = HTTPSend(PPPS( TypeOperationPPS.Check_Transaction, aaParameters ))
+      	
+      return PPPSResponse( stResponse )
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : Classe1
+resources :
+ string_res :
+  identifier : 0x10c064de0002b5e4
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

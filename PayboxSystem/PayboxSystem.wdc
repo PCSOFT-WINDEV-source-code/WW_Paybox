@@ -1,0 +1,830 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : PayboxSystem
+ major_version : 28
+ minor_version : 0
+ type : 4
+ description : ""
+ subtype : 0
+class :
+ identifier : 0x10c35fbb00f1dbda
+ internal_properties : CAAAAAgAAAB2/vstTMCJbS/hlxjFxirSqKvCUuv8YxgpWyl7S3iA
+ code_elements :
+  type_code : 10
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAACBaZU5LMkwGfSKUiNOnxQcmrip04kfnd0moOEBPCkT/AE7zrsa+eSSF3dkXwrUH15vG6i7Lk7koek/lYaAMKulUzX4VOP8pbHjJMfWnltM9NafBadTwsgPYnbw8LikWBF9gTRSSTQelpV5RszNt2NbsbVjKGvFR1rQTHgqbcmwCnT2GKgBriDyLjHKfzK9J4iMwGfviN6JeD8s1tNJLlp5p1HgCswkNIZHa9jaIh0ZMHd843Kyo1zN7joVXyY8s3Nb6nY=
+     code : |1-
+      PayboxSystem is class, abstract
+      		
+      	global public
+      		Parameters 				is PayboxConfiguration		// Paybox configuration
+      		
+      	global public
+      		CancellationURL				is string				// Return URL if the operation is canceled
+      		PaymentOKURL			is string              // Return URL if the transaction is successful
+      		PaymentRefusedURL		is string              // Return URL if the transaction is refused
+      		URLAwaitingPayment	is string              // Return URL if the transaction is pending
+      		URLServerToServer		is string		        // Server to server return URL (IPN)
+      		CancellationButton			is string              // If <CancellationURL> is empty, button to execute (dynamic session) if the operation is canceled
+      		PaymentOKButton		is string              // If <PaymentOKURL> is empty, button to execute (dynamic session) if the transaction is successful
+      		PaymentRefusedButton	is string              // If <PaymentRefusedURL> is empty, button to execute (dynamic session) if the transaction is refused
+      		PaymentPendingButton	is string		        // If <PaymentPendingURL> is empty, button to execute (dynamic session) if the transaction is pending
+      		OnPaymentAccepted		is procedure           //  If <PaymentOKURL> and <PaymentOKButton> are not specified, procedure to execute if the transaction is successful
+      		OnPaymentCanceled		is procedure           // If <CancellationURL> and <CancellationButton> are not specified, procedure to execute if the operation is canceled
+      		OnPaymentRefused		is procedure           // If <PaymentRefusedURL> and <PaymentRefusedButton> are not specified, procedure to execute if the transaction is refused
+      		OnPaymentPending	is procedure           // If <PaymentPendingURL> and <PaymentPendingButton> are not specified, procedure to execute if the transaction is pending
+      		
+      		
+      		constant
+      			TEST_KEY		 	= "0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
+      		end
+      		
+      	global private		
+      		constant
+      			PBX_1EURO_CODEEXTERNE= 	"BX_1EURO_CODEEXTERNE"	// Data specific to 1euro.com C
+      			PBX_1EURO_DATA 		=	"PBX_1EURO_DATA" 		// Data specific to 1euro.com C
+      			PBX_2MONTn 			=	"PBX_2MONT" 			// Payment in instalments: Amount of instalments F
+      			PBX_NBPAIE 			=	"PBX_NBPAIE" 			// Number of direct debits (0 = always). F
+      			PBX_FREQ 			=	"PBX_FREQ" 				// Frequency of payments, in months F
+      			PBX_QUAND 			=	"PBX_QUAND" 			// Day of the month on which the payment will be made (0 = same day as the initial payment). F
+      			PBX_DELAIS 			=	"PBX_QUAND" 			// Number of days before the first subscription payment is made F
+      			PBX_3DS 			=	"PBX_3DS" 				// 3-D Secure one-time deactivation F
+      			PBX_ANNULE 			=	"PBX_ANNULE" 			// Return URL if the operation is canceled F
+      			PBX_ARCHIVAGE 		=	"PBX_ARCHIVAGE" 		// Archiving reference F
+      			PBX_ATTENTE 		=	"PBX_ATTENTE" 			// Return URL if the payment is pending F
+      			PBX_AUTOSEULE 		=	"PBX_AUTOSEULE" 		// Do not send this payment to the bank immediately F
+      			PBX_CK_ONLY 		=	"PBX_CK_ONLY" 			// Force a payment by Gift card only (not mixed) F
+      			PBX_CMD 			=	"PBX_CMD" 				// Order reference O
+      			PBX_CODEFAMILLE 	=	"PBX_CODEFAMILLE" 		// Data specific to Cofinoga C
+      			PBX_DATEn 			=	"PBX_DATE" 				// Payment in instalments: Due dates F
+      			PBX_DEVISE 			=	"PBX_DEVISE" 			// Currency O
+      			PBX_DIFF 			=	"PBX_DIFF" 				// Number of days for a deferred payment F
+      			PBX_DISPLAY 		=	"PBX_DISPLAY" 			// Timeout of the payment page F
+      			PBX_EFFECTUE 		=	"PBX_EFFECTUE" 			// Return URL if successful F
+      			PBX_EMPREINTE 		=	"PBX_EMPREINTE" 		// Imprint provided for the first payment F
+      			PBX_ENTITE 			=	"PBX_ENTITE" 			// Numerical reference of a subdivision F
+      			PBX_ERRORCODETEST 	=	"PBX_ERRORCODETEST" 	// Error code to return (for tests) F
+      			PBX_GROUPE 			=	"PBX_GROUPE" 			// Group for Paybox Version ++ C
+      			PBX_HASH 			=	"PBX_HASH" 				// Algorithm used to sign the message O
+      			PBX_HMAC 			=	"PBX_HMAC" 				// Message signature O
+      			PBX_IDABT 			=	"PBX_IDABT" 			// Subscription number F
+      			PBX_IDENTIFIANT 	=	"PBX_IDENTIFIANT" 		// Paybox customer identifier O
+      			PBX_LANGUE 			=	"PBX_LANGUE" 			// Language of the payment page F
+      			PBX_MAXICHEQUE_DATA =	"PBX_MAXICHEQUE_DATA" 	// Data specific to Maxhicheque C
+      			PBX_NBCARTESKDO 	=	"PBX_NBCARTESKDO" 		// Maximum number of gift cards that can be used by holder F
+      			PBX_NETRESERVE_DATA =	"PBX_NETRESERVE_DATA" 	// Data specific to Net Reserve
+      			PBX_NOM_MARCHAND 	=	"PBX_NOM_MARCHAND" 		// Brand name displayed on the payment page. F
+      			PBX_ONEY_DATA 		=	"PBX_ONEY_DATA" 		// Data specific to Oney C
+      			PBX_PAYPAL_DATA 	=	"PBX_PAYPAL_DATA" 		// Data specific to PayPal C
+      			PBX_PORTEUR 		=	"PBX_PORTEUR" 			// Customer's email address O
+      			PBX_RANG 			=	"PBX_RANG" 				// Machine number provided by the bank O
+      			PBX_REFABONNE 		=	"PBX_REFABONNE" 		// Subscriber's reference (Plus version) C
+      			PBX_REFUSE 			=	"PBX_REFUSE" 			// Return URL if the payment is refused F
+      			PBX_REPONDRE_A 		=	"PBX_REPONDRE_A" 		// IPN URL F
+      			PBX_RETOUR 			=	"PBX_RETOUR" 			// Response configuration O
+      			PBX_RUF1 			=	"PBX_RUF1" 				// Method for calling the IPN URL F
+      			PBX_MODE 			=	"PBX_MODE"				// Mode (compatibility)
+      			PBX_SITE 			=	"PBX_SITE"				// Site number provided by the bank O
+      			PBX_SOURCE 			=	"PBX_SOURCE" 			// Payment page format (for mobile payment) F
+      			PBX_TIME 			=	"PBX_TIME" 				// Date and time of signature O
+      			PBX_TOTAL 			=	"PBX_TOTAL" 			// Amount O
+      			PBX_TYPECARTE 		=	"PBX_TYPECARTE" 		// Force payment method F
+      			PBX_TYPEPAIEMENT 	=	"PBX_TYPEPAIEMENT" 		// Force payment method 
+      			// 3DSv2
+      			PBX_SHOPPINGCART	= 	"PBX_SHOPPINGCART"		// Cart O
+      			PBX_BILLING			= 	"PBX_BILLING"			// Information about holder and their billing address O
+      			PBX_SHIPPING		= 	"PBX_SHIPPING"			// Information about holder and their delivery address O
+      			PBX_CUSTOMER		= 	"PBX_CUSTOMER"			// Information about holder O
+      		end
+      		
+      		constant
+      			URL_PREPROD					= "https://preprod-tpeweb.paybox.com"
+      			URL_PROD					= "https://tpeweb.paybox.com"
+      			URL_PROD_2					= "https://tpeweb1.paybox.com"
+      			URL_CGI						= "cgi/MYchoix_pagepaiement.cgi"
+      		end
+      
+      end
+     type : 131072
+  procedures :
+   -
+     name : Constructeur
+     procedure_id : 1207914381844863962
+     type_code : 27
+     code : |1-
+      procedure Constructor()
+     type : 589824
+   -
+     name : Destructeur
+     procedure_id : 1207914381844929498
+     type_code : 28
+     code : |1-
+      procedure Destructor()
+     type : 655360
+   -
+     name : Payment
+     internal_properties : CAAAAAgAAADl9qUEyf21RlO4EaAY0Dkt1OOWqYHCNdw1/PCWSbRARuChoIg0oaY/CvIlh/ad5QpLDFpyjLF79eX4e2Lc4ot5PJ1v72ALu/ZvwR6ibQkpoz9REm6wYTtq90zo9gcIHs2yupOjeivOiz+CcM1hDUxjksxjt622ylVxp0ZK1MCdBDrQGzKvyRU5rE+7GxLmb+ewvcAXgtxkpXup7ZTLyB587IOnNrKWd7uLnhDpXIQVye6JKJ44CxQ/PwTIDyZ5HJTdoXudwXxP1xngtemqpuTevLVHB4CsAhUI/BrcU/04meA//i9AYqeRKjFaN9N3HFBo4CJhXdd3FCpplFaT2vLj2G6OedrB
+     procedure_id : 1207956244891211110
+     type_code : 12
+     code : |1-
+      // Summary: Triggers a payment
+      // Syntax:
+      //[ <Result> = ] Payment (<stPayment> is PayboxPayment [, <stConfig> is PayboxConfiguration])
+      //
+      // Parameters:
+      //	stPayment (PayboxPayment): Payment description
+      //	stConfig (PayboxConfiguration): Custom Paybox configuration
+      // Return value:
+      // 	boolean: True if the payment was started, False otherwise
+      //
+      procedure global payment( stPayment is PayBoxPayment, stConfig is PayboxConfiguration = Parameters ) : boolean
+      
+      	// Checking the payment
+      	if CheckPayment( stPayment, stConfig ) = False then
+      		ErrorPropagate()
+      		return False	
+      	end
+      	
+      	aaParameters is ASSOCIATIVE ARRAY of strings
+      	
+      	// Compilation of parameters
+      	aaParameters[ PBX_MODE ]		= "1"								
+      	aaParameters[ PBX_SITE ]		= stConfig.DSContract				// 7 digits
+      	aaParameters[ PBX_RANG ]		= stConfig.Rang						// 2 digits
+      	aaParameters[ PBX_IDENTIFIANT ]	= stConfig.Identifier				// 1 to 9 digits	
+      	aaParameters[ PBX_LANGUE ]		= stConfig.Language					// Paybox language
+      	aaParameters[ PBX_SOURCE ]		= stConfig.DisplayFormat..Value	// Browser format
+      		
+      	// Payment
+      	aaParameters[ PBX_TOTAL ]		= ( Round(stPayment.Amount * 100) )	// 10 digits
+      	aaParameters[ PBX_DEVISE ]		= stPayment.Currencycode..Value
+      	aaParameters[ PBX_CMD ]		= stPayment.OrderNumber
+      	aaParameters[ PBX_PORTEUR ]	= stPayment.Email
+      	
+      	// Create a subscriber 
+      	if stPayment.SubscriberReference <> "" then
+      		aaParameters[ PBX_REFABONNE ]	= stPayment.SubscriberReference	
+      	else
+      		// Without subscriber reference, do not request holder reference
+      		stPayment.ReturnValues.Supprime( "holderref" )					
+      	end	
+      	
+      	aaParameters[ PBX_AUTOSEULE ]	= stPayment.AuthorizationOnly ? "O" else "N"	// Authorization only
+      
+      	// Force Credit card type
+      	aaParameters[ PBX_TYPEPAIEMENT]	= "CARD"
+      	aaParameters[ PBX_TYPECARTE]	= "CC"
+      	
+      	// Subscription?
+      	if stPayment.Subscription.Frequency > 0 then
+      				
+      		// Configuration of subscription
+      		aaParameters[ PBX_CMD ] += PBX_2MONTn 	+ ( Round(stPayment.Subscription.Amount * 100) )								// 10 digits
+      		aaParameters[ PBX_CMD ] += PBX_NBPAIE 	+ NumToString(stPayment.Subscription.Count, "02d")					// 2 digits
+      		aaParameters[ PBX_CMD ] += PBX_FREQ 	+ NumToString(stPayment.Subscription.Frequency, "02d")						// 2 digits
+      		aaParameters[ PBX_CMD ] += PBX_QUAND 	+ NumToString(stPayment.Subscription.DayOfMonth, "02d")					// 2 digits
+      		aaParameters[ PBX_CMD ] += PBX_DELAIS 	+ NumToString(stPayment.Subscription.DayOfMonth, "03d")					// 3 digits
+      		
+      	end
+      	
+      	// 3DSv2 ?
+      	if stPayment._3DSv2Enabled then
+      		
+      		// --- PBX_SHOPPINGCART
+      		
+      		// Minimum
+      		if stPayment.Quantity not > 0 then stPayment.Quantity = 1 
+      		
+      		xmlShoppingCart is xmlDocument
+      		xmlShoppingCart.shoppingcart.total.totalQuantity = stPayment.Quantity
+      		
+      		// Cart data
+      		aaParameters[ PBX_SHOPPINGCART ] = ( NoCharacter(xmlShoppingCart.BuildString(), Charact(10), sscInside) )
+      				
+      		// --- PBX_BILLING
+      				
+      		// Convert structure to XML
+      		xmlBillingAddress is xmlNode = JSONToXML(VariantToJSON(stPayment.BillingAddress))
+      		xmlBilling is xmlDocument
+      
+      		xmlBillingAddress..Name = "Address"
+      		xmlBilling.Billing.Address = xmlBillingAddress
+      				
+      		// Invoicing address
+      		aaParameters[ PBX_BILLING ] = ( NoCharacter(xmlBilling.BuildString(), Charact(10), sscInside) )
+      				
+      		// --- PBX_SHIPPING
+      				
+      		// Convert structure to XML
+      		xmlShippingAddress is xmlNode = JSONToXML(VariantToJSON(stPayment.ShippingAddress))
+      		xmlCustomer is xmlDocument
+      		xmlShipping is xmlDocument
+      
+      		xmlShippingAddress..Name = "Address"
+      		xmlShipping.Shipping.Address = xmlShippingAddress
+      
+      		xmlShippingAddress..Name = "Shipping"
+      		xmlCustomer.Shipping = xmlShippingAddress
+      				
+      		// Invoicing address
+      		aaParameters[ PBX_SHIPPING ] = ( NoCharacter(xmlShipping.BuildString(), Charact(10), sscInside) )
+      		aaParameters[ PBX_CUSTOMER ] = ( NoCharacter(xmlCustomer.BuildString(), Charact(10), sscInside) )
+      	end
+      	
+      	// Return variables
+      	aaParameters[ PBX_RETOUR ] = ""
+      		
+      	// Forces the response code
+      	stPayment.ReturnValues[ "e" ] = PayboxReturnVariable.transactionCode
+      	
+      	// In all cases "sign" must be at the end
+      	Delete(stPayment.ReturnValues, "sign")
+      	stPayment.ReturnValues[ "sign" ] = PayboxReturnVariable.URLsignature 
+      	
+      	// Build return
+      	for each eVariable, sParameterKey of stPayment.ReturnValues
+      		aaParameters[ PBX_RETOUR ] += [ ";" ] + sParameterKey + ":" + eVariable..Value
+      	end
+      	
+      	// Gets the address of the current page
+      	sPageAddress is string = GetCurrentPageAddress( stPayment )
+      	
+      	// Return processes
+      	__ReturnParameters( PBX_ANNULE, 	CancellationURL, 			CancellationButton )				; if ErrorOccurred then ErrorPropagate(); return False
+      	__ReturnParameters( PBX_EFFECTUE, 	PaymentOKURL, 			PaymentOKButton )			; if ErrorOccurred then ErrorPropagate(); return False
+      	__ReturnParameters( PBX_REFUSE, 	PaymentRefusedURL, 		PaymentRefusedButton )		; if ErrorOccurred then ErrorPropagate(); return False
+      	__ReturnParameters( PBX_ATTENTE, 	URLAwaitingPayment, 	PaymentPendingButton )	; if ErrorOccurred then ErrorPropagate(); return False
+      		
+      		INTERNAL PROCEDURE __ReturnParameters( sIdentifier is string, sURL is string, sButton is string )
+      			
+      			// Priority URl: Valid?
+      			if sURL <> "" then
+      				aaParameters[ sIdentifier ] = sURL
+      				
+      				// Return URLs must not exceed 150 characters
+      				if Length(aaParameters[ sIdentifier ]) > 150 then
+      					ErrorThrow(500, StringBuild("The %1 return URL is invalid. It contains too many characters: " + sIdentifier) + CR + aaParameters[ sIdentifier ])
+      					return False
+      				end
+      				
+      			// Valid button?
+      			else if sButton <> "" then
+      				aaParameters[ sIdentifier ] = sPageAddress + "?" + ( InAWPMode ? IdentifierAWPContext() + [ "&" ] else "" ) + { sButton, indControl }..Alias 
+      			
+      			// Return with return code
+      			else
+      				// The initialization process of SET_PAYBOX will call the OnLoad method
+      				aaParameters[ sIdentifier ] = sPageAddress + "?" + (InAWPMode ? IdentifierAWPContext() + ["&"] else "") + sIdentifier
+      			end
+      			
+      			return True
+      		end
+      	
+      	// Return from server to server (IPN)
+      	if URLServerToServer <> "" then
+      		
+      		sURL is string
+      		
+      		// Checks whether it's a full URL
+      		if StringStartsWith(URLServerToServer, [ "http:", "https:" ], ccIgnoreCase) > 0 then
+      			
+      			// It's a full URL
+      			sURL = NoSpace(URLServerToServer)
+      						
+      		// Checks whether it's a relative URL
+      		else 
+      		
+      			// It's a relative URL or the name of the page
+      			sURL = URLCurrentDomain( stPayment.HostIP ) + [ "/" ] + FolderWeb() + ["/"] + LanguageToDirectory() + [ "/" ] + NoSpace(URLServerToServer)
+      			
+      			// Extension OK?
+      			if Upper(Right(sURL, 4)) <> ".AWP" then
+      				// Add the extension
+      				sURL += ".awp"		
+      			end	
+      		end
+      		
+      		aaParameters[ PBX_REPONDRE_A ] = sURL + ( InAWPMode ? [ ( sURL.Contains("?") ? "&" else "?") ] + IdentifierAWPContext() else "" )
+      	
+      		// Return URLs must not exceed 150 characters
+      		if Length(aaParameters[ PBX_REPONDRE_A ]) > 150 then
+      			ErrorThrow(500, StringBuild("The %1 return URL is invalid. It contains too many characters: " + PBX_REPONDRE_A) + CR + aaParameters[ PBX_REPONDRE_A ])
+      			return False
+      		end
+      	end
+      	
+      		
+      	////////////////////
+      	// HMAC calculation
+      	////////////////////
+      	
+      	dtDateTime is datetime = DateTimeLocalToUTC(SysDateTime)
+      	aaParameters[ PBX_TIME ]		= DateToString(dtDateTime, "YYYY-MM-DDTHH:mm:SS") + "+0000"	 
+      	aaParameters[ PBX_HASH ]		= "SHA512"							// Hash algorithm to calculate the HMAC	
+      	
+      	// Compile a string with the parameters (only specified parameters)
+      	sList is string
+      	for each sValue, sParameterKey of aaParameters
+      		sList += [ "&" ] + sParameterKey + "=" + sValue
+      	end
+      	
+      	// If the key is in HEX
+      	if RegexMatch(stConfig.SecretKey, "[0-9A-Fa-f]+") then
+      		
+      		// Convert key to binary
+      		bufKey is buffer = HexaToBuffer(stConfig.SecretKey)
+      
+      		// Calculate the hash key
+      		aaParameters[ PBX_HMAC ] = ( BufferToHexa(HashString(HA_HMAC_SHA_512, sList, bufKey), NoGrouping, NoLine) )
+      	else
+      		
+      		// Calculate the hash key
+      		aaParameters[ PBX_HMAC ] = ( BufferToHexa(HashString(HA_HMAC_SHA_512, sList, stConfig.SecretKey), NoGrouping, NoLine) )
+      	end
+      	
+      	////////////////////
+      	// Build form
+      	////////////////////
+      	
+      	// Get the Paybox server URL
+      	sPayBoxURL is string
+      	
+      	// In test mode
+      	if stConfig.Preproduction then
+      		sPayBoxURL = URL_PREPROD + [ "/" ] + URL_CGI
+      	else
+      		
+      		arrServers is array of strings = [ URL_PROD, URL_PROD_2 ]
+      		for each sServer of arrServers
+      			
+      			// Loads the server status
+      			htmLoader is htmlDocument <- HTMLOpen(sServer + "/load.html", fromURL)
+      			if ErrorOccurred then continue
+      			
+      			// Gets the HTML node containing the status details
+      			eltStatus is htmlNode <- htmLoader.FindElementByID("server_status")
+      			if eltStatus..Exist _and_ eltStatus..Text = "OK" then
+      				sPayBoxURL = sServer + [ "/" ] + URL_CGI
+      				break
+      			end
+      		end		
+      		
+      		// Could not get an accessible server
+      		if sPayBoxURL = "" then
+      			ErrorThrow(500, "No server available")
+      			return False
+      		end
+      	end
+      	
+      	// Build HTML document
+      	sHTML is string ANSI = StringBuild( [
+      	<!DOCTYPE html>
+      	<html lang="fr">
+      		<head>
+      		    <meta charset="UTF-8">
+      		    <title>Paybox...</title>
+      		</head>
+      		<body>
+      			<form method="post" action="%1" id="paybox" name="PAYBOX" target="_self">
+      				%2
+      			</form>
+      			<script>
+      				document.getElementById('paybox').submit();
+      			</script>
+      		</body>
+      	</html>
+      	], sPayBoxURL, __ListParameters() )
+      	
+      	INTERNAL PROCEDURE __ListParameters() : string ANSI
+      		
+      		sForm is string
+      		
+      		// For each parameter
+      		for each sValue, sParameterKey of aaParameters
+      						
+      			// Fill in the form with the corresponding field
+      			sForm += [ CR ] + StringBuild( [
+      			<input type="hidden" name="%1" value="%2">
+      			], sParameterKey, TextToXML(sValue) )
+      		end		
+      		
+      		return sForm
+      	end
+      	
+      	// Execute form
+      	StringDisplay(sHTML, typeMimeHTML)
+      	
+      return True
+     type : 458752
+   -
+     name : CheckPayment
+     internal_properties : CAAAAAgAAABuHw0lVGpwzCQrxts6rdAZjrrrNaoX7ttssmfn90nwOg4n6wY0UVML3G0eE3VwMs0PPJTotfGB7vvwck9MQFgPadvkmGrpvXCISWiOXjsuSA/BIUsi6zYKyRfrQZYSbzTy08Sbca28gA8uYy5WDguw61AaFlE+X/lDIfsqSU80f7/cCifXceorjtdO0I9OSC30/Q+EfrNNuEJBs61qPLwOE1dHHSTQKsG8dA==
+     procedure_id : 1207959049504918918
+     type_code : 12
+     code : |1-
+      // Summary: Check the payment to be made
+      // Syntax:
+      //[ <Result> = ] CheckPayment (<stPayment> is PayboxPayment, <stConfig> is PayboxConfiguration)
+      //
+      // Parameters:
+      //	stPayment (PayboxPayment): Payment description
+      //	stConfig (PayboxConfiguration): Paybox configuration
+      // Return value:
+      // 	boolean: True if the check was successful, False otherwise
+      //
+      procedure private global CheckPayment( stPayment is PayBoxPayment, stConfig is PayboxConfiguration ) : boolean
+      	
+      	////////////////////
+      	// Checks
+      	////////////////////
+      	
+      	<block Paybox parameters>
+      		
+      		// Machine number
+      		if stConfig.Rang ~= "" then
+      			ErrorThrow(401, "Paybox configuration: Invalid MACHINE")
+      			return False
+      		end
+      		
+      		// Site number or Distance Selling (DS) contract
+      		if stConfig.DSContract ~= "" then
+      			ErrorThrow(401, "Paybox configuration: Invalid SITE/DSCONTRACT")
+      			return False
+      		end
+      		
+      		// E-commerce identifier
+      		if stConfig.Identifier ~= "" then
+      			ErrorThrow(401, "Paybox configuration: Invalid e-commerce IDENTIFIER")
+      			return False
+      		end
+      		
+      		// Secret key (backoffice password)
+      		if stConfig.SecretKey ~= "" then
+      			ErrorThrow(401, "Paybox configuration: Invalid secret key")
+      			return False
+      		end
+      		
+      	<end>
+      	
+      	<block  Payment parameters>
+      		
+      		// Invalid amount
+      		if stPayment.Amount = 0 then
+      			ErrorThrow(1, "Nil amount")
+      			return False
+      		end
+      		
+      		// Invalid email address
+      		if stPayment.Email ~= "" then
+      			ErrorThrow(2, "Invalid email address")
+      			return False
+      		end
+      		
+      		// Order number
+      		if stPayment.OrderNumber ~= "" then
+      			ErrorThrow(3, "Order number/reference required")
+      			return False
+      		end
+      		
+      		// Subscriber reference
+      		if stPayment.SubscriberReference ~= "" then
+      			dbgWriteWarningAudit(1, "The subscriber reference is necessary in the case of a payment with Paybox Direct tracking")
+      		end
+      		
+      		if stPayment._3DSv2Enabled then
+      			
+      			if stPayment.BillingAddress.LastName = "" _or_
+      				stPayment.BillingAddress.FirstName		= "" _or_
+      				stPayment.BillingAddress.AddressLine1	= "" _or_
+      				stPayment.BillingAddress.City			= "" _or_
+      				stPayment.BillingAddress.Country			= "" then
+      			
+      				ErrorThrow(4, "The customer's billing address is not complete (3DSv2)")
+      				return False
+      			end
+      			
+      			if stPayment.ShippingAddress.LastName = "" _and_
+      				stPayment.ShippingAddress.FirstName			= "" _and_
+      				stPayment.ShippingAddress.AddressLine1	= "" _and_
+      				stPayment.ShippingAddress.City			= "" _and_
+      				stPayment.ShippingAddress.Country			= "" then 
+      				
+      				// Re-copies
+      				stPayment.ShippingAddress <= stPayment.BillingAddress
+      			end
+      			
+      			if stPayment.ShippingAddress.LastName = "" _or_
+      				stPayment.ShippingAddress.FirstName			= "" _or_
+      				stPayment.ShippingAddress.AddressLine1	= "" _or_
+      				stPayment.ShippingAddress.City			= "" _or_
+      				stPayment.ShippingAddress.Country			= "" then
+      			
+      				ErrorThrow(4, "The customer's shipping address is not complete (3DSv2)")
+      				return False
+      			end
+      			
+      			// Check the country
+      			if Val(stPayment.BillingAddress.Country) = 0 then
+      				ErrorThrow(5, "Invalid country code ( ISO 3166-1 numeric )")
+      				return False
+      			end
+      			
+      			// Check the country
+      			if Val(stPayment.ShippingAddress.Country) = 0 then
+      				ErrorThrow(5, "Invalid country code for shipping ( ISO 3166-1 numeric )")
+      				return False
+      			end
+      		end
+      				
+      		// Host IP
+      		if stPayment.HostIP ~= "" then
+      			stPayment.HostIP = NetIPAddress(NetMachineName())
+      		end
+      	
+      		if stPayment.ReturnValues..Empty then
+      			
+      			// Define return values
+      			// "amount:M;ref:R;auto:A;trans:T;sub:B;payment:P;card:C;transid:S;holderref:U;error:E;sign:K"		// Be sure to keep the order
+      			
+      			stPayment.ReturnValues = [  [ "amount", 		PayboxReturnVariable.transactionAmount ], ...
+      											 [ "ref", 			PayboxReturnVariable.orderReference ], ...
+      											 [ "auto", 			PayboxReturnVariable.authorizationNumber ], ...
+      											 [ "call",			PayboxReturnVariable.payboxCallNumber ], ...
+      											 [ "sub",			PayboxReturnVariable.subscriptionNumber ], ...
+      											 [ "payment",		PayboxReturnVariable.paymentTypeUsed ], ...
+      											 [ "card",			PayboxReturnVariable.holderCardType ], ...
+      											 [ "trans",			PayboxReturnVariable.transactionNumber ], ...
+      											 [ "holderref",	PayboxReturnVariable.infoBCHolder ], ...
+      										  ]
+      		end
+      		
+      	<end>
+      	
+      return True
+     type : 458752
+   -
+     name : GetCurrentPageAddress
+     internal_properties : CAAAAAgAAAD/3SGvwolqspZF/07iyAeJDAJTmVF5Q7gHSScH9XkugNkn0h4bEWHBHCvYJuYm1Ikl6wZ3ft/9ngiZDZHVyvCjj3ORloXcECmBaRsAXJwhgHL7yYrogbJ2+GlviT30ymutk4eq5KsM+LQiwWokLG1W9/FCxDoKt8ZxilbLP8kJXcBWawP5YIBGySGSZkfVBR3mUIfWtuwKL6UnBuRqSQ==
+     procedure_id : 1207980751974738135
+     type_code : 12
+     code : |1-
+      // Summary : Returns the address of the current page
+      // Syntax:
+      //[ <Result> = ] GetCurrentPageAddress (<stPayment> is PayboxPayment)
+      //
+      // Parameters:
+      //	stPayment (PayboxPayment): Payment details
+      // Return value:
+      // 	ANSI string: URL address of the current page
+      //
+      procedure global private GetCurrentPageAddress( stPayment is PayBoxPayment ) : string
+      
+      	sSiteAddress is string
+      	sPageAddress is string
+      
+      	// Retrieves the address of the site
+      	sSiteAddress = ExtractString(Replace(PageAddress(CurrentPage(), ( stPayment.Secure ? pdSecure else pdFull )), "CTN_", "ctn_", IgnoreCase), 1, "ctn_")	
+      	
+      	// Page address
+      	if InAWPMode then
+      		
+      		// Retrieves the address of the page
+      		sPageAddress = sSiteAddress		
+      	else
+      		
+      		// Retrieves the address of the page
+      		sPageAddress = PageAddress(CurrentPage(), ( stPayment.Secure ? pdSecure else pdFull ))
+      	end
+      	
+      	// In IIS Express test environment
+      	if SysEnvironment() [=] "IISEXPRESS_" then
+      		
+      		// We must remain at "localhost" 
+      		sPageAddress	= Replace(sPageAddress, [ NetIPAddress, NetMachineName, stPayment.HostIP ], "localhost", IgnoreCase)
+      	else
+      		
+      		// In the address returned by PageAddress(), replace the IP or "localhost" by the IP or the DNS passed as parameter
+      		sPageAddress	= Replace(sPageAddress, [ NetIPAddress, "localhost" ], stPayment.HostIP, IgnoreCase)
+      	end
+      	
+      return sPageAddress
+     type : 458752
+   -
+     name : LanguageToDirectory
+     internal_properties : CAAAAAgAAAAPmjo3Cwbow3PBobCzogtEEGXInRoTa+/XFJ9MrNa2bBy0AyDKvbyAd7hPxzoKpFOQdsaRLo5axdUADA==
+     procedure_id : 1207982001810249987
+     type_code : 12
+     code : |1-
+      // Summary: Returns the directory code of a language
+      // Syntax:
+      //[ <Result> = ] LanguageToDirectory ()
+      //
+      // Parameters:
+      //	None
+      // Return value:
+      // 	ANSI string: Directory code
+      //
+      procedure global private LanguageToDirectory() : string
+      
+      	switch Nation()
+      		case 1 : return "DE/"
+      		case 2 : return "US/"
+      		case 3 : return "UK/"
+      		case 4 : return "AU/"
+      		case 5 : return "FR/"
+      		case 6 : return "DK/"
+      		case 7 : return "ES/"
+      		case 8 : return "FI/"
+      		case 9 : return "CAFR/"
+      		case 10 : return "IS/"
+      		case 11 : return "IT/"
+      		case 12 : return "NL/"
+      		case 13 : return "PO/"
+      		case 14 : return "PT/"
+      		case 15 : return "BRPT/"
+      		case 16 : return "RU/"
+      		case 17 : return "SU/"
+      		case 18 : return "TC/"
+      		other case
+      			return "L" + Nation() + "/"
+      	end
+     type : 458752
+   -
+     name : URLCurrentDomain
+     internal_properties : CAAAAAgAAAAPqZ/9a6zuC/4pQuoTONmzofgRV177BOFmuRHiDcjfP0qR4+NCV3eiy5Wpjtg9sdBn1WF1lzxCyR/JXlgUpgoPN2Sykavb3WAIZEWffgpBQYtBy+ileht8ACqOHv6Nthpc7apekhVbVI17eJJNPtu7BgogWRFUktWEg6CAkSo0augTDx0Q8zlReJ2ONk0q7/bc0gmdTfBJDOVktMm0slxk6hrI9HWo1dMlMz+ktrydNXIFbb+FPX5v/UQgqOWfqKFaL4MdtlHw1V7ZSgzQpxU9qlOAoKQEZAMHqg0aW9PVRarS3WhTi5OWIje+C7GgsHbqDg==
+     procedure_id : 1207982001810315648
+     type_code : 12
+     code : |1-
+      // Summary: Returns the full URL of the current domain
+      // Syntax:
+      //[ <Result> = ] URLCurrentDomain ([<sServerIPDNS> is string])
+      //
+      // Parameters:
+      //	sServerIPDNS (ANSI string): IP or DNS address of the server on which the current page or the current site is hosted
+      // Return value:
+      // 	ANSI string:   URL of the current domain in the following format: "http[s]://<server>"
+      //
+      procedure global private URLCurrentDomain(local sServerIPDNS is string = NetIPAddress) : string
+      
+      	sDomainURL is string
+      	
+      	// HTTP mode by default
+      	sDomainURL = "http"
+      	
+      	// Checks the current mode (HTTP variable <HTTPS> [on|off])
+      	if EnvironmentValue( "HTTPS", "off" ) ~= "on" then
+      		
+      		// HTTPS mode (SSL)
+      		sDomainURL += "s"
+      	end
+      	
+      	// Adds the domain name (HTTP variable <SERVER_NAME> or <HTTP_HOST>)
+      	sDomainURL += "://" + EnvironmentValue( "SERVER_NAME", "localhost" )
+      	
+      	// Checks the access port (HTTP variable <SERVER_PORT> [n])
+      	if Val(EnvironmentValue( "SERVER_PORT", "80" )) <> 80 then
+      		
+      		// Adds the access port to the server
+      		sDomainURL += [ ":" ] + EnvironmentValue( "SERVER_PORT" )
+      	end
+      	
+      	// Replace the IP or "localhost" by the IP or DNS passed as parameter
+      	sDomainURL = Replace(sDomainURL, [ NetIPAddress, "localhost" ], sServerIPDNS, IgnoreCase)
+      			
+      return sDomainURL
+     type : 458752
+   -
+     name : EnvironmentValue
+     internal_properties : CAAAAAgAAACvhiIr8idPS9rx8v00XMK7gtZaEXHHMGe2CSyofCJyYycHHeV5Go6I91tzV57TxhgNzdxs32lefOpyvy60Arg=
+     procedure_id : 1207982057644968126
+     type_code : 12
+     code : |1-
+      // Summary: Reads an environment value
+      // Syntax:
+      //[ <Result> = ] EnvironmentValue (<sValueName> is string [, <sDefaultValue> is string])
+      //
+      // Parameters:
+      //	sValueName (ANSI string): Name of the value to read
+      //	sDefaultValue (ANSI string - default value=""): Default value if the value to read was not found
+      // Return value:
+      // 	ANSI string: Value read
+      //
+      procedure global private EnvironmentValue( sValueName is string, sDefaultValue is string = "" ) : string
+      
+      	sValue is string
+      	
+      	// Reads the value
+      	sValue = SysEnvironment(sValueName)
+      	if sValue <> "" then
+      		
+      		// Extracts the real value
+      		sValue = sValue[[ Position(sValue, "=") + 1 to ]]
+      	else
+      		
+      		// Assigns the default value
+      		sValue = sDefaultValue
+      	end
+      	
+      return sValue
+     type : 458752
+   -
+     name : ExtractPayboxResponse
+     internal_properties : CAAAAAgAAAClrGR30Q/s/VP0gTdgtNqVqow+PKcMhj07iBJEwD+bxxA9EXnmXdMflJfEBXei6Qbno0nPCptYqzrba2yFeW/25jo8JjWS1OZOj0kYwCCbolwBoOQeggQThk96tgoE1yku0qUtZ9LC4UeJWENm1x1RLNPBR2Hcgf04PQfuyf8qKQ==
+     procedure_id : 1208953927137053312
+     type_code : 12
+     code : |1-
+      // Summary: Analyzes and extracts the elements of the Paybox response
+      // Syntax:
+      // [ <RESULT> = ] ExtractPayboxResponse ()
+      //
+      // Parameters:
+      //	None
+      // Return value:
+      // 	PayboxResponse: Paybox response
+      //
+      procedure global ExtractPayboxResponse() : PayboxResponse
+      
+      	stResponse is PayboxResponse
+      	sListParameters is string
+      	
+      	// Analyzes the received parameters
+      	X is int = 1
+      	while PageParameter(X) <> ""
+      
+      		sParameterInfo is string = PageParameter(X, paramNoDecoding)
+      
+      		sParameterName is string = ""
+      		sParameterVal is string = ""
+      		
+      		// Extracts the name of the parameter
+      		sParameterName = sParameterInfo.ExtractString(1, "=")
+      		if sParameterInfo [=] "=" then
+      			
+      			// Extracts the value of the parameter
+      			sParameterVal = sParameterInfo[[ sParameterInfo.Position("=") + 1 to ]]
+      		end		
+      		
+      		// Stores the parameter
+      		stResponse.Parameters[ sParameterName ] = sParameterVal
+      		
+      		// Ignores the signature parameter
+      		if sParameterName <> "sign" then
+      			sListParameters += [ "&" ] + sParameterInfo			
+      		end
+      		
+      		X ++
+      	end
+      	
+      	// Validate the answer
+      	stResponse.ResponseCode		= EnumerationFromValue( PayboxTypeResponse, stResponse.Parameters[ "e" ], PayboxTypeResponse.Error_Paybox )
+      	stResponse.OperationSuccessful	= ( stResponse.ResponseCode = Operation_Successful )
+      	
+      	// Check the signature	
+      		
+      	sPayboxSignature is string = stResponse.Parameters[ "sign" ]
+      	sPayboxSignature = sPayboxSignature.URLDecode(encodeURLToAnsi)
+      	
+      	<if ExecutionTarget=Linux>
+      		
+      		// Decodes the signature
+      		bufSignature	is Buffer	= Decode(Replace(( sSignaturePaybox ), CR, ""), encodeBASE64URL)
+      		
+      		// Checks the signature
+      		stRéponse.SignatureValide = ( CertificateCheckString( sListeParamètres, bufSignature, paybox.certificat, "", "", certSignatureOnly + certSHA160 ) = certificateOk )		
+      		
+      	<else>
+      		
+      		// Checks the signature
+      		stResponse.ValidSignature = OpenSSLCheck(sListParameters, sPayboxSignature, fLoadText(Paybox.Certificate))
+      	<end>
+      	
+      	
+      return stResponse
+     type : 458752
+   -
+     name : OnLoad
+     procedure_id : 1209441564843230611
+     type_code : 12
+     code : |1-
+      procedure global OnLoad()
+      
+      	switch ExtractString(PageParameter(1), 1, "=") 
+      		case PBX_ANNULE		: PayboxSystem.OnPaymentCanceled()
+      		case PBX_EFFECTUE	: PayboxSystem.OnPaymentAccepted()
+      		case PBX_REFUSE		: PayboxSystem.OnPaymentRefused()
+      		case PBX_ATTENTE		: PayboxSystem.OnPaymentPending()
+      	end
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : Classe1
+resources :
+ string_res :
+  identifier : 0x10c35fb600ebc92d
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

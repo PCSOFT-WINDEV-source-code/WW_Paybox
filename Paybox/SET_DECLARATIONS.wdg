@@ -1,0 +1,375 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : SET_DECLARATIONS
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x138db2d4022d89d0
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAABWyqY98J7WUApU2GIJ5ZUQ96DFhYZ4f4QGaPQie7JcwB7v93KtDVaIYuwEnk7MwDQ/BTGHlQACqGE3o1LrFG04xPR8/Mj+fWA9sfTDRoGZtrIGho/NvouH2ezWECdj4Q2zDi6sOcdTjN36hltw6nROUN1uNGwoMbjd0iYabzlGc9ITXHGQURKydGqPEzAZTMlSbqeFyjRjQJ9WwGSUArh/JCOqm2rIWoY6na02QBPTPP/I2JkqgZCN3XWodnv9hpNTJTTFiCKp26ZdOh3heAOKfXSpdiMqmtJ+fdEy3uMFe2+WlujrsAKfQsvdWpjTgoPDnwl50D1sqCMrP9koB84Mgrr8TG9kgL8YVd0cP5cD/86f8wWeHkyUfg==
+     code : |1-
+      
+      PayboxActivity is énumération
+      	RequestByInternet			= "024"
+      	NotSpecified					= "020"
+      	RequestByPhone			= "021"
+      	RequestByPostalMail	= "022"
+      	RequestByMinitel			= "023"
+      	RecurringPayment			= "027"	
+      end
+      
+      // Paybox return variables
+      PayboxReturnVariable is énumération
+      	transactionAmount		= "M"		// Amount of transaction
+      	orderReference		= "R"		// Reference of the order
+      	payboxCallNumber		= "T"		// Paybox call number
+      	authorizationNumber		= "A"		// Authorization number
+      	subscriptionNumber		= "B"		// Subscription number
+      	holderCardType		= "C"		// Type of card used
+      	endDateCardValidity	= "D"		// Holder's card expiration date
+      	transactionCode			= "E"		// Response code of transaction
+      	authStatus3DS				= "F"		// Authentication status of 3-D Secure
+      	paymentGuarantee3DS		= "G"		// Guarantee of 3-D Secure payment
+      	cardPrint			= "H"		// Print of the card
+      	webuserCountryCode		= "I"		// Country code of IP address of Web user
+      	bearerCardNumber		= "J"		// Last 2 digits of buyer's card number
+      	URLsignature			= "K"		// Signature on the URL variables
+      	biN6Card				= "N"		// First 6 digits of buyer's card number
+      	enrolment3DS			= "O"		// Enrollment of the holder in the 3-D Secure program
+      	cetelemPaymentOpt		= "o"		// Specific to Cetelem: payment option selected by the customer
+      	paymentTypeUsed		= "P"		// Type of payment used
+      	transactionTime		= "Q"		// Process time of transaction
+      	transactionNumber		= "S"		// Paybox transaction number
+      	infoBCHolder			= "U"		// Feedback on the cardholder
+      	transactionDate			= "W"		// Process date of transaction
+      	bankCountryCode			= "Y"		// Country code of the bank that issued the card
+      end
+      
+      CurrencyCode is énumération
+      	AFN	= "971"
+      	EUR	= "978"
+      	ALL_= "008"
+      	DZD	= "012"
+      	USD	= "840"
+      	AOA	= "973"
+      	XCD	= "951"
+      	ARS	= "032"
+      	AMD	= "051"
+      	AWG	= "533"
+      	AUD	= "036"
+      	AZN	= "944"
+      	BSD	= "044"
+      	BHD	= "048"
+      	BDT	= "050"
+      	BBD	= "052"
+      	BYN	= "933"
+      	BYR	= "974"
+      	BZD	= "084"
+      	XOF	= "952"
+      	BMD	= "060"
+      	INR	= "356"
+      	BTN	= "064"
+      	BOB	= "068"
+      	BOV	= "984"
+      	BAM	= "977"
+      	BWP	= "072"
+      	NOK	= "578"
+      	BRL	= "986"
+      	BND	= "096"
+      	BGN	= "975"
+      	BIF	= "108"
+      	CVE	= "132"
+      	KHR	= "116"
+      	XAF	= "950"
+      	CAD	= "124"
+      	KYD	= "136"
+      	CLP	= "152"
+      	CLF	= "990"
+      	CNY	= "156"
+      	COP	= "170"
+      	NECK	= "970"
+      	KMF	= "174"
+      	CDF	= "976"
+      	NZD	= "554"
+      	CRC	= "188"
+      	HRK	= "191"
+      	CUP	= "192"
+      	CUC	= "931"
+      	ANG	= "532"
+      	CZK	= "203"
+      	DKK	= "208"
+      	DJF	= "262"
+      	DOP	= "214"
+      	EGP	= "818"
+      	DPT	= "222"
+      	ERN	= "232"
+      	ETB	= "230"
+      	FKP	= "238"
+      	FJD	= "242"
+      	XPF	= "953"
+      	GMD	= "270"
+      	FROST	= "981"
+      	GHS	= "936"
+      	GIP	= "292"
+      	GTQ	= "320"
+      	GBP	= "826"
+      	GNF	= "324"
+      	GYD	= "328"
+      	HTG	= "332"
+      	HNL	= "340"
+      	HKD	= "344"
+      	HUF	= "348"
+      	ISK	= "352"
+      	IDR	= "360"
+      	XDR	= "960"
+      	IRR	= "364"
+      	IQD	= "368"
+      	THEY	= "376"
+      	JMD	= "388"
+      	JPY	= "392"
+      	JOD	= "400"
+      	KZT	= "398"
+      	KES	= "404"
+      	KPW	= "408"
+      	KRW	= "410"
+      	KWD	= "414"
+      	KGS	= "417"
+      	LAK	= "418"
+      	LBP	= "422"
+      	LSL	= "426"
+      	ZAR	= "710"
+      	LRD	= "430"
+      	LYD	= "434"
+      	CHF	= "756"
+      	MOP	= "446"
+      	MKD	= "807"
+      	MGA	= "969"
+      	MWK	= "454"
+      	MYR	= "458"
+      	MVR	= "462"
+      	MRO	= "478"
+      	WALL	= "480"
+      	XUA	= "965"
+      	MXN	= "484"
+      	MXV	= "979"
+      	MDL	= "498"
+      	MNT	= "496"
+      	MAD	= "504"
+      	MZN	= "943"
+      	MMK	= "104"
+      	NAD	= "516"
+      	NPR	= "524"
+      	NIO	= "558"
+      	NGN	= "566"
+      	OMR	= "512"
+      	PKR	= "586"
+      	PAB	= "590"
+      	PGK	= "598"
+      	PYG	= "600"
+      	HPEN	= "604"
+      	PHP	= "608"
+      	SCH	= "985"
+      	QAR	= "634"
+      	RON	= "946"
+      	ITEM	= "643"
+      	RWF	= "646"
+      	SHP	= "654"
+      	WST	= "882"
+      	STD	= "678"
+      	SAR	= "682"
+      	RSD	= "941"
+      	SCR	= "690"
+      	SLL	= "694"
+      	SGD	= "702"
+      	XSU	= "994"
+      	SBD	= "090"
+      	SOS	= "706"
+      	SSP	= "728"
+      	LKR	= "144"
+      	SDG	= "938"
+      	SRD	= "968"
+      	SZL	= "748"
+      	SEK	= "752"
+      	CHE	= "947"
+      	CHW	= "948"
+      	SYP	= "760"
+      	TWD	= "901"
+      	TJS	= "972"
+      	TZS	= "834"
+      	THB	= "764"
+      	TOP	= "776"
+      	TTD	= "780"
+      	TND	= "788"
+      	TMT	= "934"
+      	UGX	= "800"
+      	UAH	= "980"
+      	AED	= "784"
+      	USN	= "997"
+      	UYU	= "858"
+      	UYI	= "940"
+      	UZS	= "860"
+      	VUV	= "548"
+      	VEF	= "937"
+      	VND	= "704"
+      	YER	= "886"
+      	ZMW	= "967"
+      	ZWL	= "932"
+      	XBA	= "955"
+      	XBB	= "956"
+      	XBC	= "957"
+      	XBD	= "958"
+      	XTS	= "963"
+      	XXX	= "999"
+      	XAU	= "959"
+      	XPD	= "964"
+      	XPT	= "962"
+      	XAG	= "961"	
+      end
+      
+      PayboxLanguage is énumération
+      	FRENCH		= "FRA"
+      	ENGLISH		= "GBR"
+      	SPANISH		= "ESP"
+      	ITALIAN		= "ITA"
+      	GERMAN		= "DEU"
+      	DUTCH		= "NLD"
+      	SWEDISH		= "SWE"
+      	PORTUGUESE	= "PRT"
+      end
+      
+      // Paybox response type
+      PayboxTypeResponse is énumération
+      	Error_HTTP				= ""		// HTTP error
+      	Operation_Successful		= "00000"	// Operation successful.
+      	Error_Internal			= "00001"	// The connection to the authorization center failed or an internal error occurred. 
+      	Error_Consistency		= "00002"	// A consistency error has occurred.
+      	Error_Paybox			= "00003"	// Paybox error
+      	Holder_Invalid		= "00004"	// Invalid holder number.
+      	Question_Invalid		= "00005"	// Invalid question number.
+      	Access_Denied			= "00006"	// Access denied or invalid site/machine.
+      	Date_Invalid			= "00007"	// Bad date.
+      	DateVal_Invalid		= "00008"	// Incorrect expiration date.
+      	TypeOperation_Invalid	= "00009"	// Invalid type of operation.
+      	Currency_Unknown			= "00010"	// Unknown currency.
+      	Incorrect_amount		= "00011"	// Incorrect amount.
+      	Reference_Invalid		= "00012"	// Invalid order reference.
+      	Version_Invalid		= "00013"	// This version is no longer supported.
+      	Inconsistent_Request		= "00014"	// Inconsistent received request.
+      	Error_Access			= "00015"	// Unable to access previously referenced data.
+      	Subscriber_exists_already	= "00016"	// The subscriber already exists (when creating a new subscriber).
+      	Subscriber_not_found		= "00017"	// The subscriber does not exist.
+      	Transaction_not_found	= "00018"	// Transaction not found (request type 11).
+      	Reserved					= "00019"	// Reserved.
+      	CVC_missing			= "00020"	// CVC not found.
+      	Card_Not_Authorized		= "00021"	// Card not authorized.
+      	Threshold_reached			= "00022"	// Threshold reached.
+      	Holder_Already_Used		= "00023"	// Holder already used today.
+      	Country_Filtered				= "00024"	// Country code filtered for this seller.
+      	Invalid_Activity		= "00026"	// Invalid activity code.
+      	Holder_NonAuth			= "00040"	// Holder enrolled but not authenticated.
+      	Timeout					= "00097"	// Connection timeout reached.
+      	Error_Connection		= "00098"	// Internal connection error.
+      	Inconsistency				= "00099"	// Inconsistency between request and response. Try again later
+      	Error_PayboxTransaction= "001xx"	// Specific error related to the type of card
+      	Payment_pending		= "99999"	
+      end
+      
+      FormatPaymentSite is Énumération
+      	Computers				= "HTML"
+      	MobileDevices		= "XHTML"
+      	iMODE					= "IMODE"
+      	WAPFormat				= "WAP"	
+      end
+      
+      // Paybox authentication parameters
+      PayboxConfiguration is Structure
+      	DSContract			is string				// PayBox contract number
+      	ContratPlus			is boolean				// For Paybox Direct, indicates that the contract is a Paybox Direct Plus contract
+      	Rang				is string				// PayBox machine number
+      	Identifier			is string				// PayBox identifier
+      	SecretKey			is string				// Secret key (backoffice password)
+      	Preproduction		is boolean				// Boolean used to enable the payments on the "pre-production" servers (for the tests in real). False by default
+      	Language				is PayboxLanguage		// Language code (Paybox System)
+      	DisplayFormat		is FormatPaymentSite	// Payment page format (Paybox System)
+      	ArchiveReference	is string				// Reference for the seller's bank (Paybox Direct)
+      end
+      
+      // Bank details description
+      payboxccinfo is Structure
+      	CustomerReference		is string	// Customer reference (to be provided at each call)
+      	HolderIdentifier	is string	// Cardholder identifier (for a later debit, to be provided at each call)
+      	ValidityDate		is string	// MM/YY (to be provided at each call)
+      	NumberBC			is string	// Card number
+      	VisualCryptogram	is string	// CVV
+      end
+      
+      // Subscription description (Paybox System)
+      PayboxSubscription is Structure
+      	Amount			is currency	// Amount of next withdrawals (0 = amount identical to initial payment)
+      	Count		is int		// Number of withdrawals (0 = always)
+      	Frequency		is int		// Frequency of withdrawals in months
+      	DayOfMonth		is int		// Day of the month when the withdrawal will be made (0 = same day as initial payment)
+      	TimeOut	is int		// Number of waiting days before the start of subscription
+      end
+      
+      // 3DSv2: Holder details
+      PayboxClientAddress is Structure
+      	FirstName			is string, Serialize = "FirstName"			// Customer's first name, alphanumeric characters (22 max.), O
+      	LastName				is string, Serialize = "LastName"			// Customer's last name, alphanumeric characters (22 max.), O
+      	AddressLine1	is string, Serialize = "Address1"			// Billing address, alphanumeric characters (40 max.), O
+      	AddressLine2	is string, Serialize = "Address2"			// Billing address, alphanumeric characters (40 max.), F
+      	ZipCode		is string, Serialize = "ZipCode"			// Postal code for the billing address, alphanumeric characters (10 max.), F
+      	City			is string, Serialize = "City"				// City of the billing address, alphanumeric characters (50 max.), O
+      	Country			is string, Serialize = "CodePays"		// Country code of the billing address, ISO 3166-1 alphanumeric characters, (3 max.), O
+      end
+      
+      PayBoxPayment is Structure
+      	Amount					is currency		// Amount to pay
+      	CurrencyCode				is CurrencyCode		// Currency of the amount
+      	Email					is string			// Customer's email address
+      	OrderNumber				is string			// Order number
+      	Subscription				is PayboxSubscription	// Subscription details (Paybox System)
+      	CCInfo					is payboxccinfo		// Customer payment information (for storing bank data via Paybox)
+      	Comment					is string			// Comment associated with the transaction (Paybox Direct)
+      	Activity					is PayboxActivity	// Type of activity linked to payment (Paybox Direct)
+      	//
+      	// For a PayboxDirect link
+      	SubscriberReference			is string			// Card (or subscriber) context identifier to be defined by the seller	(Paybox System/Direct)
+      	AuthorizationOnly	is boolean			// Flag to trigger an authorization only, for later debit with Paybox Direct (Paybox System/Direct)
+      	//
+      	Secure				is boolean			// True if the current connection is established in HTTPS (SSL secure mode), False for a standard HTTP connection
+      	HostIP					is string ANSI		// IP or DNS address of the server on which the current page or site is hosted (by default: NetIPAddress())
+      	ReturnValues		is ASSOCIATIVE ARRAY of PayboxReturnVariable	// Expected return variables (Paybox System)
+      	// 3DSv2
+      	_3DSv2Enabled				is boolean				//s
+      	Quantity				is int				// Quantity of purchased products (default 1)
+      	BillingAddress		is PayboxClientAddress	// Invoicing address of the customer
+      	ShippingAddress		is PayboxClientAddress	// Customer's shipping address
+      end
+      
+      // Paybox response
+      PayboxResponse is Structure
+      	OperationSuccessful	is boolean
+      	ResponseCode			is PayboxTypeResponse
+      	ErrorInfo			is string
+      	Parameters			is ASSOCIATIVE ARRAY of strings
+      	ValidSignature		is boolean
+      end
+     type : 720896
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x10c3581600cb004c
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

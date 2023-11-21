@@ -1,0 +1,124 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : WW_Paybox
+ major_version : 28
+ minor_version : 0
+ type : 4097
+ description : ""
+ subtype : 0
+project :
+ identifier : 0x0
+ internal_properties : CAAAAAgAAACr38WcXgYL+VuBUUgMXcrGrTI1nqs/oRnW+HqEZS+w2/MsD91nE6T1OVGDw1S27OtCEG54XSpTIWNiNare3w34dn6RppFW+2o6mBlxoeL1ofjU001+b717l04AkG/e/fEe2iqlx40PdKegY4xjYja9cT2tY2VboKZJucZkqernBQwNlVWFos1vTA1+G8TFCXBRnDR0MO5rEvUX9eU6rlgtJOmklGKLwTTI8W0r2xAxv+rKHg6VyVsgt+IZ1tnLkB2xPT4TOm8J2UcmTxeUsV2OEBWAmPFlKUZEBORMYaXz0ugy/INhd8AOD5ROLac8SuTGG3G7YluzRuA7bX/g2aq5NEZP0p2Sdhj0JRv/Fw2SC/jwQEnwfU3xRZyCtqhWRinsNMoSR1vUn2csBPRXKUQH58KUuafyKtgeLxlR0c0r97WHbVW/nRrOMovSCp+jXGE4/CaKGdqGOcONWuYjVtBkhM7QdTtHWNEqu6DF+aWpHHVdh02arojCKBggfRvLRsQVf2FJDQfKbyfUwiX2KnvZ52kOJr/qAdsM9KcNTxYaOPCM9FC+lrSkTw5hLfd2F5UETGmjYIku9TwioO6hdN8h/QYMOs1E9DDNoNJn7sFRz1wGwvf0Qc3FF390dywtGGHdtX/a13fwA58teYWQ52ssUofT98ib8/5KLjVCjsmeWsA/sQ5TPZwtDSA4Y6Hq/2Y6cGkPXxr2O27wceZFyg2h/vQfxyPFL37pum4Fw+ayu+l7InKzXeCmb1e1uoZGK0XvdPORQ8nU6oX1Zr7gLp3pSaX8EKQvGDuih2ovtKlSfNg6eEFh+P2x8XITlbcpqqBCZTlnKe3V6olqL4AD+40oLwPpyvi7Xrq6jm8lzGxRQEofoq2iQ3bV/h8cNIKgMz0H96N6rU1ZgTpfrkPXjv+N5fDoHed9BGkvHC13p9yejiSchpclckXF/SrxHdQLUub4Sn/OgCv3fv0WScDjAwfE8LjGPzmf+xH0W99zwQTrwpUVJxMkd+ASbzOrEvmauahrITJrRD/xMr+qGprit44WKLJeYIeafIbpbGi5LsIjnc90ui2SUXbBt+9Muc10UF2H38Y7KwZiTRPtzcpee8iVr3hl5Xxc/sscmJuraBMPC77qSSTgQ66mFBU5IC979JyeNkh4v5zUER7ysXf8b2PoiJtdPMg7uH3fYvOBeTieGD+0eKvNJ9Boy+IttxrOaD36zdRiiRFqKjdjQ++/ZoRwDEY1hJR0WIsJnED5o8AN6I33cBl1Af/lUJLkzW69QsfNnUTWKz+BhHMihMn7WlZURgQuXxFF4wD5fbbxGGAQ0ntsgxfO8GBJoA1OlFOlLg6wiP0pT9rYCfSzqzwbNncF9cSz959X2L8jzdZrtrOD+L6Lhn54fAoPzQfY+WU4AOixgsB2TaBIPGFOx3rCcn9ORbkFFMOJee4seRKwPfCi2Oj39iG5PwK/l0ro9I3QgWfx2dpL9LjRM2Qe+8Qj9VPcwHht2Q8S05pBHrek2QtEmt2jiCXw849Jq0RlKWuG2MPXPN+KMWAIC38TIis4hYEgV6OGXUeXdQuvF3ROq3hY4S1JI8ZBcPdkwxFJftgkAHX4OAJGWo0h9twZR5Mf3JvcfXdLlTDAaGWzrEcx2Urz3Hmpfz7qNex1cttCNE1P9hfqWWtfGnzk45Pp4KPvseY7pBuxJPRhEUGBnTgJvjBFIRO/2CURmhG1ZZ2XHJg7crW0/WtU3gVAw/xOa0nDwp+DBPTis4rj8AilhFt4NEzXONtyRvShq1qnuIaA59XesH3iXgfDzhF7FmkjyHJKLYaB0c2vOILVCB0oBdZ71UZdUDQNRi3pTWd6dsMC05KzfAuj1ZtRDv9rkCG3FGkyR69Y8IxX+JUax1RcPgDLc8jB9Neppq4aJvSYjGMkHUxbFzjk3kr8mhgJVMCL/W4CjZs5eg7qPQs=
+ configurations :
+  -
+    name : Site
+    internal_properties : CAAAAAgAAABxk2idpmmyhnysil9jkqv+AIcaKVh5oLJWu1kWSMpiq97oI+BzfeMCUvm9tOS35aymvGZPKloicUNKQaPenCQkdY6tyWq3MO4a7sDMmdcnkRuUx0DdQYqCn8/WXwFRFksgpX+RBipXUC+2S9U/zznApzmEuAkfC70+6obaOxzcqiGRhfGl/+mlGxuoqdxxFb7izgHaqtd7kMjJ6HtkC3U9zlNeSoM0BLsm+Ot199LF13N6mC2JAXmsatMHm3Tdc2aLtF304UVcPXcq+6VZfqDRb+7Ht4C1QaLNtJlsl2lU0PsVee/g2aGxIEBFx5EtysIom/j+4Vn8pJ2VuVomFYxCoUwAx15lYDwSg4GePxpr/HkMlytW3yl7++xzCaDHvNUrs8TWBh+KCruGscOGOv8+2LObfQpEJZXEiuAlQcO5nBZcPeop3i50LsAIYU2UjDe/8r3HHWMAs8+AGrnhKr4IqvGXWIHXa10IkbforFJcguLJ8C1H6K3w1BG0cEqAy0ROciO4VVIhghJ6QVQgpsUSw9pjNERsAP9SuMTcgEdzPwfHwp4POLqVsiOSq+XQOMDIy2hKklZUlnucnA/e94mglukTEPpHxuKuaZHLni3tR0tQzy2gISd8X41vvkEzWHQEaBpEPQT68D5rlGPQ1WeBLOaAtYCKI0FPuG9gkfJ9LEBnqfAXJI89I40RcOj7Ljl8oEUrtgEcQ33hX20dwHFpCL88f8IvlY2JBMF/648PIx0urqrvcg8/sRQ64k6CHMPIymBAlEzbbUKDICTcku3Ld+VMlEF8ByBmoRWnVcSq86Cy6NIm1IjX9tSakOvqtAz8YWeOtnqj1N2n+gfJ5Odwu4MLJ3/zFNLWA18681nXa8LDEV4l3gepdx0aVhRZPKdBzhrkYrT1j8cTfhrSGAQU3fZwsPAFH/HKRxIw2kIWQC82CtBrMhV2v+qinc2PA6edWKkf4hOLCDOq70qUTEKn/YIZ5ManpB/Ht6A89vSvdSc098wVHRZ9ZxUTCXlL4DbjgwZleXqmuqR0IwKW22XoFG72YI4Fq+1BADwDe5u0ggGgLV8xraLEntGUR6RX8aTugQZ9Rb0RIUtO0bwpwKxHjrDm1HtAfAv/8uZBUZ9DZhSImoSUMpZMt7hO0VLraY6vwyixVwUnFj8R6DIS5JcUPJGm3SNmwXdofG3BOrhNBJsDHGa2vfBlsmrzyYX/PC9yySMYWfNMOheD9zUdRDsmdb39o3l98xH55lcxWQDiJcVeJOSC0trJ1Enwhta9pSthJ0NKNpZj/4lIu8hUve5ClKexlqMXcDw8eIuP+efwvrOoe+eKKjdLereTwRSDjPTSGeD3z/GOaP1QSO5L5lAUVzJnJRaPdMx//U2wL8VCytCYsk7eWWvAsEZJWVRaRtb6G6yQRV9bTQGLea0sqZSbMHXxNjuwYWawww/wSJ+8pDaFZruAlDZZ03P7qioXqDT1N8c4Bwe4lTFzyxLarchnXrQJ3dJnt8opiwOX0dSTIGr3jWtxSTpUOSEspNU5NMtAiLEcHqOxKGSvsZnQxLKYrd1i+AMEjIt+66lDeTBL6VmJQzNvrJ4sRQhGyTKe0T+iVK3dcIZzSs0lMdMnRXqGsLmnECJn9mUCEJnoXrffrPcvmhSzx3c0oWQ943LOfjbGi2DfBQNMB4Vur7dHmQi8vmXt22+Xx4n+RsfAynYsnixBDHbQXdm4ouc2Cdc8bA+QktSkQ+YsKMdJCT7sXVo44q93ZvD9JHtF3mKNpJtJnu84E5BKEAz0YNXI/bV7T+6Cft5jRqZmR7UamR8jFQKnw39mOQ+b/LanmR+ij6eifLbkMqHuwakae4AspBS7mWNsLt9RTdPZCE77ZtJbCU9Lx8RjLpLJGnrsmrvem5uv0y815ye4GI0UksRGNnVsix5nnUeHmwz3ahEYzGvAF7Oi2eZhtrXmz4exuhvcnkYSlTAqTDvjlZAE8pjPkZ9XbKKSOZCIswAJsZ6PqYGcwSTC664Zj2QtAZQ9GX5Co/y/VGWaOnfgDx7HYCVkFkZ+esRF5DvtuR8BOwTC+CpKUVFn/peKV5WkP9993UE7gKWlJwFssKz00YP9zwo5DIgqU+rSxypPISxKr3iIPdPC5IL31PL4j+QkFskgN+OEjmin6zasQazEJCHGYHnW2/tPpcjsUI+dXCjJUMji02qj6FWfl3iKHfjl740CSO/MlvIFaFlYRZWRfS+K8hnJ9HKZ/6UXPtDo3OBO6JT5d1Ge+XeYAl4uHedLUYwwBzyeY/nGgqbMhXCIf5rymfdmbHXEM04rwKIs9cxDwHly8QGeeNC8XorQMtDlIOQrysO6tSvU4JDJ3JBSd54/YUTykYlSXQM27NTEQTBdxSMFJlL9nmxCnBkQoVAgLmhp9M/WaAhJHc2zTMzK9unFUnryX8qALpocGJQFHDnugpUwcVrWdqH24mswo8BIzuHXXvW3/cUJYYmwKAUYIHRi7yXieQRoUr8cwEYOFc9KGjdwQT2xs8HAvH0rOviJOLcfD9Zd72j7b7c1E5Ro44zKaMGaZrajnVWSFMTkj6Giw2T3DoZOUqnYYtfTQ4H5TwjOKsO0hyplX/fF9vNvibZ9HlRZltEsQJi1AmfAdrbNmNWwy5QeAtQC8LrKGD4NcIw9XZVyesndK0zMkss7AjGWlHOMWfcLK8EzvGFqIjY9EfeqEc2LRpF1NYKB/FDoi39ovoo/q6qWcruXnaWjRfirANtfhNSYKmyoId3wkkb/3Qlz+gxkgP5QBqGR0ivuzS2NhyZAaIK8tpc2rGifl30mxu0nVnl3kHdfpA71UUiJZpDOcfpYcO0PYq0QQxkmTfKP4IGzHW05TdOaAtC6ykqClH9iAppW6z+zAPqA1qwubI9OkUY2gbHPBHo0NLqC64AOSv8yQZc2PEQZBzWU7MM7jTDBY4kYpKU92EeMXW2VUZ9lPMNsxirWEn9pRN0pdsrfgktkjDQ8U3JrPgft64AI6qx75Ko6sUkhAaiTLSoYjm+as432BXXWowtRspPFWzGpgBOqHtIskOJ39fYkJ++OoEk/RmJyvGBXiqrpA2HKsMRSdxV8VuZ/VDc+GRLu4p/fEnLa7hItiO5cO5nBukEzpK9a2aHhheY0UVAr36VcqsJR6mWhh0JoHmrhgCAL4BPKRRNU3Pk/0eYcglEaHupwVQTZHorS/BTgZWFuIp7fn3751uN9Pot/h2sG453X4jlSpbT6btdslAnU6kfyvnpjXRdAq9C4nPofTFTtvfuv37eKr0RFG7VtBWlkp0U39MdxRBK6cMCH2VgetqpFCypinISXemcC1DEa3ErKUir/r2Bij9ZrxYMUUtgxzsyWo0maJU78aka2eu64gDjuMmR30VTw3c4D94zJ4rNfVfAdNUfwDYCxN4FTQ539tGfKq+iiHfYgvppMJJrLy4yZ2B3jPf4NoAv/P5suX0tsnGubazge7xm+2nJiyBd9ykDpWJ0cXwmc9h9pO0ravJ5LLV5E3lTrSFz07hMD9FNnO0IZpnwU1V1HBfHBefzRbLqRKKiqwVAomO1kRKKVi0+rLfecChQHohbdvVzzwF1gZhlTE+Fip5UD7ViPS4uM4yzxckm/Xr3XB+8yLg6tS61sxCBDJ7jsUR8hSepZpiHDaZov17LUXYnv8Ux/50WUv/ICt/ynusTTmX/6bvNlw3meypfYNof4bdiLAyY8fWkL+45+XLng2dI2uheEalCshQI3qP0itV9pRVSWksDm+FaGwgCRN+eLpBVMInkqFyTWKtdSSK2qrx1/ecoxiSbxxu87yB0MB280/lOrffCmaFqs3JY3uSne/cI6yh2mL5R2wkFQ+tzkDQdzFTtTE6HGU2lOrThn4vSnvc6ASHTYhl8zxRs+umnxTLCZs4gu63/lx0PmNAcIfaM7LZo+zCYaTWeZZotqkXuEgFOFewA1PXGTndB9XczW7Rxva0vn6Kr75a+chikg8Tdtm5oG1BwUn0A827Rz/hiBV/xyHpOelL6eRiTpL1ChlAa6WLWEkfHv61DKMAbDaPMOXifqxG4plipaS25U/9sx4UJHWT4rOZ7KejxZL98QBw2qxuUTeHMeigy6fMTt4tdqTn8J0WowIV0LAeup6Ev+xB9RjyJ+5loTGfIn9bUi0X53/VaLeNPnoyTsFuVtst93DXgW+AP4qaONzYB9ZDHZucG0EPWL3Vv7xTSnm74+wxeEWOk3YAfT32nrO9aG+0YF16KiXK8fGJYQz71txNU/Z/py3v9sUKvJa/AS2k3F7m623DH2u6wiKie29QTHnz+zZaJi1P5UKSJ3pIAbCSxEfgpnMVvvqoviAmOGLlExzLJa/E6W7zw46JggOgdzMNt+b6X3ANzJVGzkOibsEmGbEZjlc3DLMf2PhXk3Xb59ju5w4XgVItC7b9jh6oHVDR9aQ1DmCG0TnJlSQkBtaDJ0gFOrgmYbPz+8cFFYvxaPlkeaiB2tOlMzaWUGrMffVMrWV0bFmV3uu/O9zn0xNMsvt0569kVT+Zn6OgEpwYf4Tx9rC9hLtH5rS0EgutixstVjYexvh2RpGnbs6cruzWCz6k9RNLTOlioA9OHhXE00DHZZ8DcSw3XNddqkxhtmmgPLsmfi8AHRtu1G9JNI3rVgLUFvVofnqOxIpHhcccytNg==
+    configuration_id : 13492465762498919274
+    type : 2
+    generation_name : WW_PayBox.wdl
+    version :
+     version : 28.00Aa
+     internal_generation_version : 1
+    index_page_generation_name : PAGE_AWP_EXAMPLE
+    language : 2
+    64bits : true
+ elements :
+  identifier : 0x40c337a20023386d
+  elements :
+   -
+     name : PAGE_EXAMPLE_ENDPAYMENT_AWP
+     identifier : 0x40c7215b003f7bde
+     internal_properties : CAAAAAgAAADaXQzBIVG0KN2HOjKCLTpVXpS1vGCsJyCDuQ7pE8g57wWhpd3a+QDkHfpKUP7HVRmUIdKnUXTfAA0MCCJ6mqWycQblng==
+     physical_name : .\PAGE_EXAMPLE_ENDPAYMENT_AWP.wwh
+     type : 65538
+     report :
+      fr-FR : FR
+   -
+     name : PAGE_AWP_EXAMPLE
+     identifier : 0x40c71e630037e428
+     internal_properties : CAAAAAgAAACon/IP/wcC9gsdjKi083iLhD4rwpbyXY4h9rAUCwVgNV937nodiynXEBno8lidf8cit3gBC7IRMnOinlS0UG/4N0yjUA==
+     physical_name : .\PAGE_AWP_EXAMPLE.wwh
+     type : 65538
+     report :
+      fr-FR : FR
+  other_elements : []
+  analysis : .\WW_Paybox_Integration.ana\WW_Paybox_Integration.wda
+  net_assemblies : []
+  uwp_api : []
+  external_components : []
+  internal_components :
+   -
+     physical_name : .\PayboxDirect\PayboxDirect.wci
+   -
+     physical_name : .\PayboxSystem\PayboxSystem.wci
+   -
+     physical_name : .\Paybox\Paybox.wci
+ data_directory : <RepExeOuRepDonneesCommun>
+ common_generation_directory : true
+ wb_skin : 230 Spatiumn
+ wb_color_palette : BlueGreeniumn
+ site_type : 3
+ languages :
+  - en-GB
+ wb_style_sheet : .\WW_Paybox_Integration.wws
+ site_map :
+  roots : []
+  orphans :
+   -
+     name : PAGE_AWP_EXAMPLE
+     parameters : []
+     title : {}
+     description : {}
+   -
+     name : PAGE_EXAMPLE_ENDPAYMENT_AWP
+     parameters : []
+     title : {}
+     description : {}
+ url_rewriting :
+  internal_properties : CAAAAAgAAADkPzcUdUUS7wCiun+MCjqYH70RJdzkSv/nRvXZ3ENdikMa6bcHtsAH
+ code_elements :
+  internal_properties : CAAAAAgAAABJtPbB7xlgvyHWqsSxkyDKiXHeKB4QR985c2hqHmNEW1mTLGjzzodDd67LFy7lubf5fVgOhNXNCbODHL4Ilab7MhIKxmI=
+  type_code : 0
+  p_codes :
+   -
+     code : |1-
+      
+      constant
+      	Payment_RequestDebit		= 0
+      	Payment_RequestAuthorization	= 1
+      	Payment_Debited				= 10
+      	Payment_Authorized				= 11
+      	Payment_DebitPending		= 100
+      	Payment_AuthorizationPending	= 101
+      	Payment_DebitDenied		= 400
+      	Payment_AuthorizationDenied	= 401
+      	Payment_DebitCanceled		= 900
+      	Payment_AuthorizationCanceled	= 901
+      end
+     type : 196608
+   -
+     type : 196621
+   -
+     type : 196627
+     enabled : false
+  orphans :
+   -
+     name : Site
+     identifier : 0x40c337a20024386d
+     code_elements :
+      type_code : 159
+      p_codes : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : WW_Paybox_Integration
+rad :
+ internal_properties : CAAAAAgAAABhIL0UXeZmxDJxY3Xy0Q==
+project_explorer :
+ explorer_type : project
+resources :
+ string_res :
+  identifier : 0x0
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAAAd98VSJfHHqE3P0QHwrwdhn7ig8dWBR6valpUTgnAMTVXiDg==

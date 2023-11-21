@@ -1,0 +1,518 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : PAGE_EXAMPLE_ENDPAYMENT_AWP
+ major_version : 28
+ minor_version : 0
+ type : 65538
+ description : ""
+ subtype : 8192
+page :
+ name : PAGE_EXAMPLE_ENDPAYMENT_AWP
+ identifier : 0x238db2d306ff83f4
+ internal_properties : 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
+ properties : {}
+ controls :
+  -
+    name : RTA_E_commerce
+    identifier : 0x238db2d3070083f4
+    internal_properties : CAAAAAgAAADRMTEGUDuZjuY7wJEbWFE0WLrW/qWuaAGGmLrUSbxaeAqRBdsdOUXU+//eUognR2Fsdo2f7+HVuzZgCARNXOzSwhgg3C/r43lEzZ3h+KgBuHWnsJYjQdU0mckZf4VX5nKADiUkjbuATseQ/9N4mNM6sxm2jAF23UGi87xocwcrH9WHe3JlW4Xd8UtAigxM6D5NDbR+2LFoBXzE+1kqVZCiOQck10xEsFJ8BZVbLVmpvn2rrUa6TnEvfcwtcEZmX592QB8nXt/uZOKkz0mmmJVFuyMlOGEIe7DaG+wlXmQzsfJ9wEUD9sBNH7l6KzbscCS+yTvrN3CbUN1KirPqCidjXVGxZ8ApsmhhqcKYVOdCKQ+PRwVDqGFnN0CuyCGx+i3JJvrEZKSIUBfGsJhtTIXIGh7HxOD/WkffxJvmUmd8MdPLqa5iFtK28Q8mCxRKGuxBUIOZrVnzT37/MKLc1gI0/Yo/k9L6VDXfaDGsj4PAsEYnPqPSPjY7t5PjZF/A0NaPimvyLZE770rKbUBrRC7H9fUwSlwhToGreoMvxdlTHFNiPr+yzwTnAX/8tv+PCpfQw1l9aJElW8Vt4IM+l7SrW2MNZ+eqK3tCB+uMPlpQyeDs4Nmw5wTNumYuk/7hA4OxH4s0vECz5Tq1wgIORZL4DZUeUfvNdMBX3L07jfutylFNfn2dp3fKXo5WcPizR3MrVYs/vlhwKIynDS1Td6MJ65l3vqLUqVjn8q2U0OGvx35ohuWUTYwYnFWOtruZxSUHTUj1HabnWoCcWJJ8pk1x0N7uX92IvZcpyZ4Pqs2Qsuj7XQ+gJUTP4x+cUhhVpqq+W8W8t6koyf7XwC2N/alRm0qg+OyzRcNiIA/I59SYPjhxp1O/9ksrvXTK5C1NAeUNJjf5a5sDmNYratEd7F8y4TY7MclSwzOnsl+CuRH/z2vGPfHZKjKIQV9PwOw2NHvZUAGA/U/mWyJShG6TT3EXIXSh+owhqxwfe3vP3R6W3qRozFM+aLCrAN5+8oeFKwP7QVMn1mSJr5h5CeTaKFvapY0V0wUe3XhY68OjbLFYYzB2nA3mKx4M63IQ1FXiZutQZohY9K6MTccFOLJGeDYpNvJ836KRMdOuUcN0nRXPu+6kmDBBGhgcTDVlqVDyuRXtjMkRdq33Cq78KDL1fGU/xDV4CMTR7NWd0h5s+4NgJtMHcV+RGMgrbaZjw41rena+sCDlDx2p+5FUKLCITFoua0nZFAFpX0AnqFumIS0iHLWql4KY4YdTNiQs86tgfpC8T0UbDk7JLFenp7aTMUH1qeX8dSyiBofnOe7+zEfLvgJJ4MtghFsJAs4RuhemY+XCLAyBWkw7YXJ/xcSZBaq2FRf7DeD6ZleVYpX3tOUVXmi+SDVSsNGOrRvRzzd5gN6oZL5kcz+Z6LwYB01XBbfrt+P7cqBwc1zbUykkVJ64vkXpAJaAM2juTFrk8EV8ePPop11vtBxCVaLC/pd7vtBTv6Y4VTw9Mrsdn19u+wK+0sowq2S1odNewV3AYHj6WczWEquoXWqhYKl0Fi9BVQcM3sap3wVtnqCknBV45wbiBNAW2UrTasF6moI/rKXrzXjDj+KpI1CGii08zZma+XWHaZRO/zn/wj79Y0k3PARQ9n625oMGbo6aAxT6pt2ctRWMf0txsmBn0l5FSCG7zHFQiD5fOux2csvG3r5OFXPzA3MRleFgkr2GHnpPuWxateGgDi9edY3K
+    properties :
+     x : 26
+     y : 6
+     width : 750
+     height : 61
+    type : 109
+    code_elements :
+     type_code : 132
+     alias : A1
+     p_codes :
+      -
+        type : 851998
+        role : N
+      -
+        type : 852005
+        role : N
+      -
+        internal_properties : CAAAAAgAAAAaO3IFoatk/0qci0nlGCG6Hz2428Irop3mdvABfOa+/jPzFBO1EzovvfHSFQ0TBSAqk7kf3WONLgZhY5FLK4lsvPaZWQVEe66QVuOKnx/bVtOwKEb/d/sK
+        type : 852227
+      -
+        type : 1310979
+        enabled : false
+      -
+        type : 852228
+        role : N
+  -
+    name : RTA_Use_Paybox_System_for
+    identifier : 0x238db2d3070183f4
+    internal_properties : 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
+    properties :
+     x : 26
+     y : 67
+     width : 954
+     height : 148
+    type : 109
+    code_elements :
+     type_code : 132
+     alias : A2
+     p_codes :
+      -
+        type : 851998
+        role : N
+      -
+        type : 852005
+        role : N
+      -
+        internal_properties : CAAAAAgAAAAaO3IFoatk/0qci0nlGCG6Hz2428Irop3mdvABfOa+/jPzFBO1EzovvfHSFQ0TBSAqk7kf3WONLgZhY5FLK4lsvPaZWQVEe66QVuOKnx/bVtOwKEb/d/sK
+        type : 852227
+      -
+        type : 1310979
+        enabled : false
+      -
+        type : 852228
+        role : N
+  -
+    name : RTA_Transaction_status
+    identifier : 0x238db2d3070283f4
+    internal_properties : CAAAAAgAAACdLQL2Wt1ulazJHm5zt3rJcCB1zHKGDlAopYikFEzftvNxMmUBVEmgvxld0MCxa630H1Bhpikry+xM4sH0GvVdapSnD3tq1CniLG7jVYIJoOZpRalYpR0MBPj7n/1Z7V2B93c0E5YTnHB/DclRtRopKdEC0xFRhRUb5Y8e/Z0He41CeVWNn2xjr9OekC7mRFK5kaopDplm7rEpKZLypaYxdjiEKiDvgbua4GyU4QE4s7F16ulDo5UVEM69gZ7+8tIUlWmVvntX7+sJYTNZOPdi00Bncek5X1HoVVK5PPOnTjP5166vq+taqEVYiV61S48MwBj/eCVIZixy7SU+k4gbmU2ChLhrJAUKB9Ic4/I8+VmwG2QUvxuIlMFDDxpbwhIu68Alz3BeTP1CwLK+4Vuz0fHmHg30LDNhqf/Sa/kon/MxT2XnmbSgTtbM/DbfnYTkxXtxK8aVwRJEDe1oCpPJtFFKaGEmttVMxTUarvqRV6xlJQk6u0LxhekA66SFVxPyminmXYdOLlNiGQQqdTUGSsojZwLcW6EuFcAzOM6d2VkCrTfWXJVnz+nSa5KnGRhHd42e9A8wR6Y+f0SjOboB86xilkEGUf4HDqE7UyekfsZnnoqdLb3a8f6EeUXWk7qp5kBKszfqB4GpKMHKHpXzw/Q341jah+hlX+bcXgR3lNQgiR89BVd/xmlxu/KjeaSwMPQG9XTHVSBm48ZgRgsh61avp6XDUHj4uQ2cWOEN8smG0/56mUxU6WV5Nl+cMKHHgXhF/H5cCbPjSpmqtIw1oM2y3TrfUF6Q4KzHwpH+o/9YsfLCJ/eKy8JJg55+GQOBWctcsRZB9Xq/xme0XG9JBNKrYJ+D46rS3w6N1mpifaM1F2kqG2Nuod17Jin3wcPzhjCzgo24IM5dnkr7ZOjgiwgVzpuYbJ6x8waRuGp3prhYm/b9DdzJJeWfwxjlv0YKG4l2BRouOS9RSQgKVXjkvuJktWDoW+VlS3aGIcCu4982CLgOhVFEd7ZAbCYl1iMWTdpw+X1fg3LAglNS5rZWqrbv3dcS0UrIos7J8D/UEyGfC6JQpYpMTqHlSYZRK6r/L9nZTcyxboaMhGImAKpm3mE1tCpdJXuVZrF+oIT9Vjeyl3Gqiqefs9Nm7xIgAtz8cQxpWWGBkkxnhQXAcx5QRZpmZT92WcVmmC63zpi869TCOrMSEdex/a84X9YvzWUjxau6hg8RgMeyMzHMCWlDQmhjSj6lEqwqJcBdBnFv1Es4AbuUoaNFWjdRS282nqjzsOZCzWKMifSkpAVdPKc3NgZI61+VCQITIdXKWEUBQ3qoTr3S19cLSLRRDej2RAwqJRfYbQ1YSp5zl6dJdsmU9aX6uFfnHtibyegTGuRxcEuzHfROB/mlqgM+dIaT23Rbjbo1/ILMQFQGyOYeUJKPta1aZJq4ITyXVKNyfQW/Tz8Jtf8G8DMvh1oXF3bvBMAzfrW6bgSDANrOsybxeCxy/+JF108lb74lPEssTM2H182sctD4DNY0e6v31iOxFyrV3O1w75KsJTHx6Axs4CgHiHPYn2Hn4C/krI+6wYj/yDiIchv+NJ/auuiWt2PJNNcLxRXl1I3NfEGVRgCVdbpif5AxLozEqRA5boglLWCaKU9wYtqMRFAwh0UylNA86LN9XukTN5J7GmpEH8rYEfHTsFAbbZSOpTfaZJFnzG3yHX8RRkz6+m8gDf4fqfri07bY46Z6gXoDUFPIWipDNGvKeHCKG7KhBLDDxQ5jAIjysFsvN4CcrDvQqGGyIwbgjGNgngGPw2UtrqQASVHn6nykUtA5X07t3p/7/cG8Pbre/DwIcidSXsYcMwlmEBz4OkSv1+EtKhiHFOwCXa2WKRGe5O4RLcfrOZqGrOgmwmthbbqT+iX5wQY=
+    properties :
+     x : 26
+     y : 225
+     width : 123
+     height : 20
+    type : 109
+    code_elements :
+     type_code : 132
+     alias : A3
+     p_codes :
+      -
+        type : 851998
+        role : N
+      -
+        type : 852005
+        role : N
+      -
+        internal_properties : CAAAAAgAAAAaO3IFoatk/0qci0nlGCG6Hz2428Irop3mdvABfOa+/jPzFBO1EzovvfHSFQ0TBSAqk7kf3WONLgZhY5FLK4lsvPaZWQVEe66QVuOKnx/bVtOwKEb/d/sK
+        type : 852227
+      -
+        type : 1310979
+        enabled : false
+      -
+        type : 852228
+        role : N
+  -
+    name : RTA_STATUS
+    identifier : 0x238db2d3070383f4
+    internal_properties : CAAAAAgAAAD9NFPzAlscYl7RyHmCcdqx5xogvaVD3VLRLXzbt5iqAVt0jmVCp76uvV86yksAHg4H+nXWJ3ufGUT7nEWCHvmNFfaRhaXUW1n721BNkSvfNJUfbdo/YfYeS6Eh/0PWmdUI1nS98dh2hL0KSI+egaCaBBcc+Dhh5xKLoH4/ITiDPMumlguHbyvJK6ngtdMfW4FdTTlcagQ0urpCfaHR5UL9KMUP6b0COodFGihQHYY/pN+wwuNjEe4HfhEIlq8ES9g6YClB3EOwW+e+9rf7hV1Nv3uZOMvWjB2/O82rx59XxfX2oyYQdYq6wu9hhdCzCBNft9+bGvoFGOg/sOan8vbxzOP0mLtRFKTBPAw8AHxiwG09LuL1eXDETJVSZr3+8wxmrvnRIk9pgb/Ore8Y/jREAzQ8wE6IfI7MamGYkeVianvVMsL8tk0ssj7BSxm6+2MTe4LusI1mewHC2CQsDBbZPC64FgMwRFHp4b5xcVd2kfLDRanXW7NmC7OI90CMAgKAMe08hhK5ITfhYweJHs3PrHzm+F50FD9gSR54Gf7CMwDfDe2fabbzFXVBB+AHf/qdM9Rpg3L5NFlxyhJRzGUmeVVtya3KVzBReWfE6QzEM5YP7rmUQ+Fl9kCMFEKYBYLVaCYdIp8T4rlU++J87nMWrBKiI9PtxPGl7hG3Hp+RFBV/3tXMGuMDjpf8uL2bN236lxzYm9t397Zz0rNhU+2wBHgeQa0zbI5iJCD4BbeY+n9jkLXJKJFyxiE/3zfHVj3hsYJDLY9GaysjaXC4irmq/HzUubnGKWABtn7NdBYffqYJNBE6cdTpt8sFBGum5+qcIPXmj2oUX8OmY8lOdfAxgPW/HWqsQ4v+vXGLoEZ2eCH016cZ/Ul9ntJqbfomFHE7KtxHAvXV11RRvI4eCI67AUmx1reLGEjErfSInHhvLsFsoQPKznajdFMHE3gQ5w/xW81qW1xc/sciA1L3H+wk3DgCCAP0jIwvqAuH4cJT3LkUaC10pABTBkSps16cw9LdhW7JfS3VTChDh0NzDcRj5yqzIDkCLyUkhZVpegHI9P4hxtMDTL0hMJox0IR0h8niKEhwLiEwdCBzRjnQq3YTV69FW07/d/YtHcmisJsiD16GiAbpsDvhQFp0P56VfpqVtZD+rU45PuodCoBOkvFFJ1VPmtRQr8JtQm3BQBy5yLPgEVx6NWBmImbvDU0Lbgh68En9MzMyiEV/6T5EYG4bdLNWrAZYmSZiy+4o60sApvBsVd1Fpy8zhtB4y/hiq1M65WpcLSLepKfDsqHmRRYmdFBXFg9L83g7ZhxSab0Dd6Z5SUdh+XPEWV891H4HIfBbf5Xahj0ZVxtV0mSPru2EXkCw1c3mTicZzpBEeMap+WQixG7HWo2Z0/vV+69WEdmMbvmJ4o6JoY+P5yxCmn7LpIjyLXbNCYNQu4sqVnzbBg1YTm35t1X3L2URfTHS4pvX+5SF3xydnwWEFm5tNX2fmbzigbYi/SHvTV5ve1uvAE3okH3Re/X3vkO8Jk6eyANfakhJV0Gm8AlPyvFzrk6WgB9bkLTWVGfCpNQSJrcfYAg/nL3CLC2+G+eCUYXzFk4ywZBWiiSQoh/p+qSC8L5jVQJatMsP09aZGgZVnq5VMHddd0XTzesu2CT1p5fMmibwIT3oYMwLf3n43j9gVbgMW9KhD7be8Z8d9evClChEhAlXHnujY44+Ll4HpMhqCEX6xttG6tcmfSE6M2Kf8X8ykP/b8TWwmOmWPjCTvRD+WhVfULXDrJ0FN/yCBmgeZmhfOHeLxf66itHc9AooNLk3XCI44ZNKlvdgxHwYsHQWBi08QVRZq4Gd1OVbGjRYflar3Xh/
+    properties :
+     x : 155
+     y : 225
+     width : 233
+     height : 20
+    type : 109
+    code_elements :
+     type_code : 132
+     alias : A4
+     p_codes :
+      -
+        type : 851998
+        role : N
+      -
+        type : 852005
+        role : N
+      -
+        internal_properties : CAAAAAgAAAAaO3IFoatk/0qci0nlGCG6Hz2428Irop3mdvABfOa+/jPzFBO1EzovvfHSFQ0TBSAqk7kf3WONLgZhY5FLK4lsvPaZWQVEe66QVuOKnx/bVtOwKEb/d/sK
+        type : 852227
+      -
+        type : 1310979
+        enabled : false
+      -
+        type : 852228
+        role : N
+  -
+    name : RTA_NoName1
+    identifier : 0x238db2d3070483f4
+    internal_properties : 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
+    properties :
+     x : 26
+     y : 279
+     width : 948
+     height : 72
+    type : 109
+    code_elements :
+     type_code : 132
+     alias : A5
+     p_codes :
+      -
+        type : 851998
+        role : N
+      -
+        type : 852005
+        role : N
+      -
+        internal_properties : CAAAAAgAAAAaO3IFoatk/0qci0nlGCG6Hz2428Irop3mdvABfOa+/jPzFBO1EzovvfHSFQ0TBSAqk7kf3WONLgZhY5FLK4lsvPaZWQVEe66QVuOKnx/bVtOwKEb/d/sK
+        type : 852227
+      -
+        type : 1310979
+        enabled : false
+      -
+        type : 852228
+        role : N
+  -
+    name : BTN_Debit
+    identifier : 0x238db2d3070583f4
+    internal_properties : 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
+    properties :
+     x : 26
+     y : 361
+     width : 120
+     height : 24
+    type : 4
+    code_elements :
+     type_code : 4
+     alias : A6
+     p_codes :
+      -
+        type : 851998
+        role : N
+      -
+        internal_properties : CAAAAAgAAAAbUbshpY0HFzos9eSOQ+XeCZmtxqZZrG58A2HCnw5radoA0NvwIG8c33rVAcgxg9E1QmhcsxB7/93kRXEgQTEJFUPsUicTM1WvUVuYWp/z55gkDTzi/Q==
+        code : |1-
+         
+         // Search for the current payment
+         Payment.ReadSeekFirst(Reference, gstResponse.Parameters[ "ref" ])
+         if Payment.Found() then
+         	
+         	// If the payment is authorized
+         	if Payment.Status = Payment_Authorized then
+         		
+         		// Via Paybox Direct		
+         		
+         		// Test Paybox configuration
+         		// https://www.paybox.com/espace-integrateur-documentation/comptes-de-tests/
+         		PayboxDirect.Parameters.DSContract		= "1999888"
+         		PayboxDirect.Parameters.Identifier		= "107904482"		// NON 3DSECURE TEST
+         		PayboxDirect.Parameters.Rang			= "32"
+         		PayboxDirect.Parameters.SecretKey		= "1999888I"
+         		PayboxDirect.Parameters.Preproduction	= True
+         		PayboxDirect.Parameters.ContratPlus		= True
+         		
+         		// Caution, to trigger an authorization+debit for a Paybox Direct subscriber
+         		// extract the handle and the expiration date from Payment.HolderID:
+         		//
+         		//  sHandle is string = ExtractString( Payment.HolderID, 1, "++" )
+         		//  sDate is string = ExtractString( Payment.HolderID, 2, "++" )[[ A 4 ]]
+         		// 
+         		//	stCCInfo is PayboxCCInfo
+         		//	stCCInfo.HolderIdentifier = sHandle
+         		//	stCCInfo.ValidityDate = sDate		
+         		//	stResponse is PayboxResponse = PayboxDirect.TriggerAuthorizationDebitSubscriber( payment.SubscriberReference, Payment.Amount, Payment.Reference, stCCInfo )		
+         		
+         		// Triggers the debit
+         		stResponse is PayboxResponse = PayboxDirect.TriggerDebitSubscriber( Payment.SubscriberReference, Payment.Amount, Payment.Reference, Payment.TransactionID, Payment.CallNum )
+         		if stResponse.OperationSuccessful then
+         			
+         			// Payment completed!
+         			Payment.Status = Payment_Debited
+         			Payment.Save()
+         			
+         			RTA_STATUS			= "Completed"
+         			GR_DEBIT.Visible	= False
+         			Info("Transaction successfully completed!")
+         		else
+         			
+         			Error("An error occurred:", stResponse.ErrorInfo)
+         		end		
+         	end	
+         end
+        type : 851984
+      -
+        type : 1310736
+        enabled : false
+      -
+        type : 852149
+        role : N
+ type : 1
+ languages :
+  - en-GB
+ code_elements :
+  type_code : 38
+  p_codes :
+   -
+     code : |1-
+      procedure MyPage()
+      
+      // Reads the Paybox response
+      gstResponse is PayboxResponse = PayboxSystem.ExtractPayboxResponse()
+     type : 851968
+   -
+     internal_properties : CAAAAAgAAADjcREHn1zhYs+OtD9+IjADDHF9lfGqvtnQm8Pi1mjMVbB14rMSe09iNB/193WSx29bEa8xFMnMkUpLdWJh/VVIDf+SOS5S75V4v3Bei8v6j02XEV5Vyp5ljW0Y8qmLTBBkxxx8Kj4oygSNSUUFz2031EaIfLsFvKDPDNABgsiWOfM7AURiQj4znSM8mHc4yf6hSt+F42rnFv7Q1aH3AdLVBbBVPIGCFDGy6w8XbJwZoMiLyT/C+uJ6eyw0Ba/X5ZNLE0EqWWKiIOE8Q3FIN62RN8HOV3tniks=
+     code : |1-
+      
+      // If you have not clicked on the Debit button
+      if PageParameter(1) not [=] "WD_ACTION" then
+      
+      	switch gstResponse.Parameters[ "status" ]
+      		
+      		// Transaction successful
+      		case "ok"
+      			
+      			// Check
+      			if gstResponse.OperationSuccessful = True _and_ gstResponse.ValidSignature = True then
+      				
+      				// Mark the payment if found and if the details are valid
+      				MarkPayment( gstResponse.Parameters[ "ref" ], gstResponse.Parameters[ "amount" ], procedure() {
+      							
+      					// Store details
+      					// > holderref => HolderID: Contains the handle and the expiration date of the card used. Can be used for Paybox Direct "subscriber" operations
+      					// > trans => TransactionID: Transaction number to provide to Paybox to track, debit, refund, etc.
+      					// > call => CallNum: Paybox call number to provide to track, debit, refund, etc.
+      					Payment.HolderID		= gstResponse.Parameters[ "holderref" ]
+      					Payment.TransactionID	= gstResponse.Parameters[ "trans" ]
+      					Payment.CallNum		= gstResponse.Parameters[ "call" ]
+      					
+      					// AuthorizationXXX => Authorized / Debited
+      					Payment.Status = PaymentUpdateStatus( Payment.Status, [ Payment_RequestAuthorization, Payment_AuthorizationPending ], Payment_Authorized, Payment_Debited )
+      					
+      					if Payment.Status = Payment_Authorized then
+      						
+      						// Edit interface: Changes the status and authorizes debit
+      						RTA_STATUS = "Allowed"
+      						GR_DEBIT.Visible = True
+      						
+      					else
+      					
+      						// Change interface: Changes the status and refuses debit
+      						RTA_STATUS = "Completed"
+      						GR_DEBIT.Visible = False
+      						
+      					end
+      									
+      				} )
+      				
+      			end
+      			
+      		// Pending transaction
+      		case "wait"
+      			
+      			// Check
+      			if gstResponse.ResponseCode = Payment_pending _and_ gstResponse.ValidSignature = True then
+      				
+      				// Mark the payment if found and if the details are valid
+      				MarkPayment( gstResponse.Parameters[ "ref" ], gstResponse.Parameters[ "amount" ], procedure() {
+      					
+      					// AuthorizationXXX => AuthorizationPending / DebitPending
+      					Payment.Status = PaymentUpdateStatus( Payment.Status, [ Payment_RequestAuthorization, Payment_AuthorizationPending ], Payment_AuthorizationPending, Payment_DebitPending )
+      									
+      					// Change interface: Changes the status and refuses debit
+      					RTA_STATUS = "Pending"
+      					GR_DEBIT.Visible = False
+      					
+      				} )
+      				
+      			end
+      			
+      		// Transaction refusée
+      		case "refused"
+      			
+      			// Check
+      			if gstResponse.ValidSignature = True then
+      				
+      				// Mark the payment if found and if the details are valid
+      				MarkPayment( gstResponse.Parameters[ "ref" ], gstResponse.Parameters[ "amount" ], procedure() {
+      					
+      					// Store details
+      					// > trans => TransactionID: Transaction number to provide to Paybox to track, debit, refund, etc.
+      					// > call => CallNum: Paybox call number to provide to track, debit, refund, etc.
+      					Payment.TransactionID	= gstResponse.Parameters[ "trans" ]
+      					Payment.CallNum		= gstResponse.Parameters[ "call" ]
+      					
+      					// AuthorizationXXX => AuthorizationRefused / DebitRefused
+      					Payment.Status = PaymentUpdateStatus( Payment.Status, [ Payment_RequestAuthorization, Payment_AuthorizationPending ], Payment_AuthorizationDenied, Payment_DebitDenied )
+      					
+      					// Change interface: Changes the status and refuses debit
+      					RTA_STATUS = "Rejected"				
+      					GR_DEBIT.Visible = False
+      					
+      					
+      				} )
+      				
+      			end
+      			
+      		// Transaction canceled
+      		case "cancel"		
+      			
+      			// Payment canceled, no info
+      			if gstResponse.ValidSignature = True then
+      				
+      				// Mark the payment if found and if the details are valid
+      				MarkPayment( gstResponse.Parameters[ "ref" ], gstResponse.Parameters[ "amount" ], procedure() {
+      				
+      					// Store details
+      					// > call => CallNum: Paybox call number to provide to track, debit, refund, etc.
+      					Payment.CallNum = gstResponse.Parameters[ "call" ]
+      					
+      					// AuthorizationXXX => AuthorizationCanceled / DebitCanceled
+      					Payment.Status = PaymentUpdateStatus( Payment.Status, [ Payment_RequestAuthorization, Payment_AuthorizationPending ], Payment_AuthorizationCanceled, Payment_DebitCanceled )
+      					
+      					// Change interface: Changes the status and refuses debit
+      					RTA_STATUS = "Canceled"
+      					GR_DEBIT.Visible = False				
+      				
+      				} )
+      			end
+      	
+      			other case
+      	
+      				Error("Invalid status", gstResponse.Parameters[ "status" ])
+      	
+      				// Change interface: Changes the status and refuses debit
+      				RTA_STATUS			= "Invalid"
+      				GR_DEBIT.Visible	= False		
+      	
+      	end
+      
+      	if gstResponse.Parameters[ "status" ] <> "" then
+      
+      		if gstResponse.ValidSignature = False then
+      
+      			Error("Invalid signature", "Check that the file 'pubkey.pem' is present in the data directory")
+      
+      			// Change interface: Changes the status and refuses debit
+      			RTA_STATUS			= "Invalid signature"
+      			GR_DEBIT.Visible	= False
+      
+      		end
+      	end
+      
+      end
+     type : 851996
+   -
+     type : 852017
+     enabled : false
+   -
+     type : 852119
+     enabled : false
+   -
+     type : 852298
+     role : N
+   -
+     type : 851999
+     role : N
+   -
+     type : 852000
+     role : N
+   -
+     type : 852232
+     enabled : false
+   -
+     type : 852167
+     enabled : false
+   -
+     type : 852169
+     role : N
+     enabled : false
+   -
+     type : 852225
+     role : N
+     enabled : false
+   -
+     type : 852227
+     enabled : false
+   -
+     type : 1310979
+     enabled : false
+   -
+     type : 852228
+     role : N
+     enabled : false
+  procedures :
+   -
+     name : MarkPayment
+     internal_properties : CAAAAAgAAACerzGo/0Q8MaKgRUx7QSfgcJsGhyJ5ncAN3RQAfEnoPUqhUZurNfWgPWxtPfQ4xk8oCSVCqura7VgOU7dSFTC7lhxw3dOhTNu0PwX6biVeY7BNCEOsB5DRw6tYPw5lBs2YlePCzeKz6k/SuiFF
+     procedure_id : 1408978877780886516
+     type_code : 14
+     code : |1-
+      // Summary: Searches for the payment and applies changes if possible
+      // Syntax:
+      //MarkPayment (<sOrderRef> is string, <nAmount> is int, <pChanges> is procedure)
+      //
+      // Parameters:
+      //	sOrderRef (ANSI string): Order reference
+      //	nAmount (integer): Payment amount
+      //	pChanges (procedure): Callback to make changes
+      // Return value:
+      // 	None
+      //
+      procedure MarkPayment( sOrderRef is string, local nAmount is int, pChanges is procedure )
+      
+      	// The payment can be marked
+      	Payment.ReadSeekFirst(Reference, sOrderRef)
+      	if Payment.Found() then
+      		
+      		// Checks that the status is valid
+      		if Payment.Status in ( Payment_RequestAuthorization, Payment_RequestDebit, Payment_AuthorizationPending, Payment_DebitPending ) then
+      			
+      			// Checks the amount
+      			if Round(Payment.Amount * 100) = nAmount then
+      				
+      				// Store details
+      				pChanges()		
+      				
+      				// Update
+      				Payment.Save()		
+      				
+      			else
+      				ErrorThrow(401, "Invalid payment amount")				
+      			end
+      		else
+      			ErrorThrow(403, "Invalid payment status")
+      		end
+      	else
+      		ErrorThrow(404, "Order reference not found")
+      	end
+     type : 458752
+   -
+     name : PaymentUpdateStatus
+     procedure_id : 1408978877780952052
+     type_code : 14
+     code : |1-
+      // Summary: Updates the status of a payment
+      // Syntax:
+      // [ <Result> = ] PaymentUpdateStatus (<nCurrentStatus> is int, <arrExpectedStates> is array, <nFinalStatus> is int, <nDefaultStatus> is int)
+      //
+      // Parameters:
+      //	nCurrentStatus (integer): Current status
+      //	arrExpectedStates (array): Possible states
+      //	nFinalStatus (integer): Final status if the values match
+      //	nDefaultStatus (integer): Default status if the values do not match
+      
+      // Return value:
+      // 	integer: Status to be updated
+      //
+      procedure PaymentUpdateStatus( nCurrentStatus is int, arrExpectedStates is array of int, nFinalStatus is int, nDefaultStatus is int ) : int
+      	
+      	// If the current status is in the list of expected states
+      	if arrExpectedStates.Seek(asLinear, nCurrentStatus) > 0 then
+      		// Returns the expected final status
+      		return nFinalStatus
+      	end
+      
+      	// Otherwise, returns the default status
+      	return nDefaultStatus
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : PAGE_SansNom1
+resources :
+ string_res :
+  identifier : 0x10c7214d00e144a1
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+webification :
+ internal_properties : CAAAAAgAAACYzxT95H3qP7nIys4LqA==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe
